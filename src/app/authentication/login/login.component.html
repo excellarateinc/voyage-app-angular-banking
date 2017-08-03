@@ -1,0 +1,17 @@
+<div fxLayout="row">
+  <span fxFlex></span>
+  <md-card fxFlex fxFlex.sm="66" fxFlex.xs="100" fxFlex.md="66">
+    <div fxLayout="column">
+      <div fxFlex>
+        <img src="./assets/images/voyage-logo-vert.svg">
+      </div>
+      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+        <a fxFlex.gt-sm (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
+        <span>&nbsp;</span>
+        <a fxFlex.gt-sm routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
+      </div>
+    </div>
+  </md-card>
+  <span fxFlex></span>
+</div>
+

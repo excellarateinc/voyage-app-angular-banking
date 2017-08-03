@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500';
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+md-card {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 960px) {
+  md-card {
+    margin: 10px;
+  }
+
+  .main-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/*
+There's a bug with transform conflicting with position:fixed. This fixes the issue.
+https://github.com/angular/material2/issues/998 */
+.mat-sidenav-container, .mat-sidenav-content {
+  transform: none !important;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.voyage-table-header {
+  font-weight:bold;
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 5px;
+}
+
+.voyage-table-row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.dark-row {
+  background-color: #f6f6f6;
+}
+
+.badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  border-radius: 10px;
+}
+
+.badge-notification {
+  margin-top: -46px;
+  margin-left: -15px;
+  background-color: #F44336;
+}
+
+.fill-space {
+  flex: 1 1 auto;
+}
+

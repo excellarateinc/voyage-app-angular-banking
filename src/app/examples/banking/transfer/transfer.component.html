@@ -1,0 +1,41 @@
+<div fxLayout="row">
+  <md-card fxFlex="40" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+    <md-card-title>New Transfer</md-card-title>
+    <form [formGroup]="transferForm" (ngSubmit)="transfer()" novalidate>
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <md-select placeholder="From Account" fxFlex formControlName="fromAccountId" style="margin-top:15px; margin-bottom:30px;" required>
+            <md-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
+          </md-select>
+        </div>
+        <div fxLayout="row">
+          <md-select placeholder="To Account" fxFlex formControlName="toAccountId" style="margin-top:15px; margin-bottom:30px;" required>
+            <md-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
+          </md-select>
+        </div>
+        <div fxLayout="row">
+          <md-input-container fxFlex>
+            <input mdInput placeholder="Amount" formControlName="amount" required>
+            <md-error *ngIf="transferForm.controls['amount'].hasError('required')">
+              Amount is required
+            </md-error>
+          </md-input-container>
+        </div>
+        <div fxLayout="row">
+          <md-input-container fxFlex>
+            <input mdInput placeholder="Memo" formControlName="memo">
+          </md-input-container>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" style="margin-top: 10px;">
+          <button md-raised-button color="primary" type="submit">
+            Transfer
+          </button>
+          <span>&nbsp;</span>
+          <button routerLink="/examples/banking/dashboard" color="accent" md-raised-button>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </md-card>
+</div>
