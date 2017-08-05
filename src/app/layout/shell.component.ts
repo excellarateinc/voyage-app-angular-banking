@@ -30,7 +30,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     this.watcher.unsubscribe();
   }
 
-  onToggleSidebar(): void {
+  onToggleSidebar($event: any): void {
     this.sidebar.toggle();
   }
 }
