@@ -14,7 +14,6 @@ export class ShellComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean;
   @ViewChild('sidebar') sidebar: SidebarComponent;
   private watcher: Subscription;
-  toggleTheme: false;
 
   constructor(private authService: AuthenticationService, private media: ObservableMedia) { }
 

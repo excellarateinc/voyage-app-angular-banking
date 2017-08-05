@@ -23,6 +23,7 @@ export class SidebarComponent implements OnInit {
   isAuthenticated = false;
   @ViewChild('sidenav') sidenav: MdSidenav;
   mobile: boolean;
+  toggleTheme: false;
 
   constructor() { }
 
