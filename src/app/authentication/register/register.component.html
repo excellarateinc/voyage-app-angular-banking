@@ -4,25 +4,25 @@
     <div>Sign Up</div>
     <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
       <div fxLayout="column">
-        <md-input-container fxFlex>
+        <md-input-container>
           <input mdInput placeholder="Email" formControlName="email" required>
           <md-error *ngIf="registerForm.controls['email'].hasError('required')">
             Email is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container>
           <input mdInput placeholder="First Name" formControlName="firstName" required>
           <md-error *ngIf="registerForm.controls['firstName'].hasError('required')">
             First Name is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container>
           <input mdInput placeholder="Last Name" formControlName="lastName" required>
           <md-error *ngIf="registerForm.controls['lastName'].hasError('required')">
             Last Name is required
           </md-error>
         </md-input-container>
-        <div formArrayName="phoneNumbers" fxFlex>
+        <div formArrayName="phoneNumbers">
           <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
             <md-input-container fxFlex="60">
               <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
@@ -38,19 +38,19 @@
             </md-select>
           </div>
         </div>
-        <md-input-container fxFlex>
+        <md-input-container>
           <input mdInput placeholder="Username" formControlName="username" required>
           <md-error *ngIf="registerForm.controls['username'].hasError('required')">
             Username is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container>
           <input mdInput placeholder="Password" formControlName="password" type="password" required>
           <md-error *ngIf="registerForm.controls['password'].hasError('required')">
             Password is required
           </md-error>
         </md-input-container>
-        <md-input-container fxFlex>
+        <md-input-container>
           <input mdInput placeholder="Confirm Password" formControlName="confirmPassword" type="password" required>
           <md-error *ngIf="registerForm.controls['confirmPassword'].hasError('required')">
             Confirm Password is required
