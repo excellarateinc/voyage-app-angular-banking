@@ -1,8 +1,8 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
   <md-card fxFlex>
     <md-card-title>Balance History</md-card-title>
     <md-spinner *ngIf="working"></md-spinner>
-    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
       <div fxFlex="50">
         <canvas baseChart *ngIf="lineChart.data.length > 0"
           [datasets]="lineChart.data"
@@ -25,7 +25,7 @@
   </md-card>
 </div>
 
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
   <md-card fxFlex *ngFor="let history of transactionHistory">
     <md-card-title>{{history.accountName}} Activity</md-card-title>
     <div fxLayout="row" class="voyage-table-header">

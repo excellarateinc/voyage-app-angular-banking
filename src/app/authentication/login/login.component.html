@@ -1,11 +1,20 @@
-<div fxLayout="row">
+<div fxLayout="row" fxShow fxHide.xs>
   <span fxFlex></span>
   <md-card fxFlex fxFlex.sm="66" fxFlex.xs="100" fxFlex.md="66">
     <div fxLayout="column">
-      <div fxFlex>
-        <span style="font-size:30px;">My Bank</span>
+      <div fxLayout="row" style="margin-top:25px;">
+        <span fxFlex></span>
+        <i class="material-icons" style="font-size:150px; color: #2b3d53;">account_balance</i>
+        <span fxFlex></span>
       </div>
-      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+      <div fxLayout="row" style="margin-top:20px;">
+        <span fxFlex></span>
+        <div style="font-size: 60px; color: #2b3d53">
+          Acme Bank
+        </div>
+        <span fxFlex></span>
+      </div>
+      <div fxLayout="row" style="margin-top:60px;">
         <a fxFlex.gt-sm (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
         <span>&nbsp;</span>
         <a fxFlex.gt-sm routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
@@ -15,3 +24,23 @@
   <span fxFlex></span>
 </div>
 
+<div fxLayout="column" fxHide fxShow.xs fxFlexFill style="margin-left:10px;margin-right:10px;background-color: #2B3D53">
+  <div fxLayout="row" style="margin-top:60px;">
+    <span fxFlex></span>
+    <i class="material-icons" style="font-size:60px; color: #009b98;">account_balance</i>
+    <span fxFlex></span>
+  </div>
+    <div fxLayout="row" style="margin-top:10px;">
+    <span fxFlex></span>
+    <div style="font-size: 40px; color: white;">
+      Acme Bank
+    </div>
+    <span fxFlex></span>
+  </div>
+  <div fxLayout="column" style="margin-top: auto; margin-left:10px; margin-right: 10px;">
+    <a (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
+    <span>&nbsp;</span>
+    <a routerLink="/authentication/register" md-raised-button>SIGN UP</a>
+    <span>&nbsp;</span>
+  </div>
+</div>

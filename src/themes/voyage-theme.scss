@@ -21,7 +21,7 @@ $voyage-app-theme: mat-light-theme($voyage-app-primary, $voyage-app-accent, $voy
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($voyage-app-theme);
+//@include angular-material-theme($voyage-app-theme);
 
 //
 // Define custom palettes for dark theme.
@@ -98,3 +98,77 @@ $voyage-theme-dark: mat-light-theme($voyage-app-primary, $voyage-app-accent, $vo
 .voyage-theme-dark {
   @include angular-material-theme($voyage-theme-dark);
 }
+
+//
+// Define custom palettes for My Bank.
+//
+$voyage-mat-darkgreen: (
+  50: #e6e8ea,
+  100: #c0c5cc,
+  200: #969faa,
+  300: #6b7887,
+  400: #4c5b6e,
+  500: #2c3e54,
+  600: #27384d,
+  700: #213043,
+  800: #1b283a,
+  900: #101b29,
+  A100: #55ccc9,
+  A200: #009b98,
+  A400: #006c6a,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$voyage-mat-lightgreen: (
+  50: #ff8d54,
+  100: #ff8d54,
+  200: #ff8d54,
+  300: #ff8d54,
+  400: #ff8d54,
+  500: #ff8d54,
+  600: #ff8d54,
+  700: #ff8d54,
+  800: #ff8d54,
+  900: #ff8d54,
+  A100: #56677f,
+  A200: #2b3d53,
+  A400: #01172a,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$voyage-bank-primary: mat-palette($voyage-mat-darkgreen, A200, A100, A400);
+$voyage-bank-accent:  mat-palette($voyage-mat-lightgreen, A200, A100, A400);
+$voyage-bank-warn:    mat-palette($mat-red);
+$voyage-bank-theme: mat-light-theme($voyage-bank-primary, $voyage-bank-accent, $voyage-bank-warn);
+
+@include angular-material-theme($voyage-bank-theme);

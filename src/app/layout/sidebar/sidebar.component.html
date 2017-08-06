@@ -57,17 +57,19 @@
             {{toggleTheme ? 'Go Light' : 'Go Dark'}}
           </a>
         </li>
-        <li>
-          <a class="nav-item-container" style="margin-left:25px;" routerLinkActive="active" (click)="$event.stopPropagation();">
-            <img src="./favicon.ico" width="20px" />
-            Powered by Voyage
-          </a>
-        </li>
       </ul>
     </nav>
+    <div style="position: absolute; bottom:15px; left: 40px;" *ngIf="mobile">
+      <img src="./favicon.ico" width="20px" style="position:absolute; top: 0; bottom: 0; margin: auto;" />
+      <span style="margin-left:25px;">Powered by Voyage</span>
+    </div>
+    <div *ngIf="!mobile">
+      <img src="./favicon.ico" width="20px" style="padding-left:30px; position: absolute; margin: auto;" />
+      <span style="margin-left:55px;">Powered by Voyage</span>
+    </div>
   </md-sidenav>
 
-  <div class="main-content">
+  <div class="main-content full-height">
     <router-outlet></router-outlet>
     <span class="done" *ngIf="isAuthenticated">
       <button md-fab>
