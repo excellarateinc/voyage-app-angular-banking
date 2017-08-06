@@ -20,6 +20,12 @@ export class AccountsService {
       .catch(error => Observable.throw(error.json()));
   }
 
+  createAccount(account: Account): Observable<Account> {
+    return this.http.post(`${environment.API_URL}/banking/accounts`, account)
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
+  }
+
   getTransactionHistory(): Observable<Array<TransactionHistory>> {
     return this.http.get(`${environment.API_URL}/banking/accounts/transactions`)
       .map(response => response.json())

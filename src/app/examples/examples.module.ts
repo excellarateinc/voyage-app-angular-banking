@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
 import { TransferComponent } from './banking/transfer/transfer.component';
 import { AccountsService } from './banking/accounts.service';
+import { CreateAccountComponent } from './banking/create-account/create-account.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { AccountsService } from './banking/accounts.service';
     ChartsModule,
     ExamplesRoutingModule
   ],
-  declarations: [AccountsDashboardComponent, ProfileComponent, TransferComponent],
+  declarations: [AccountsDashboardComponent, ProfileComponent, TransferComponent, CreateAccountComponent],
   exports: [AccountsDashboardComponent],
   providers: [ AccountsService ]
 })

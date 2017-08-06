@@ -5,12 +5,12 @@
       <div fxLayout="column">
         <div fxLayout="row">
           <md-select placeholder="From Account" fxFlex formControlName="fromAccountId" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
+            <md-option *ngFor="let account of myAccounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
           </md-select>
         </div>
         <div fxLayout="row">
           <md-select placeholder="To Account" fxFlex formControlName="toAccountId" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
+            <md-option *ngFor="let account of otherAccounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
           </md-select>
         </div>
         <div fxLayout="row">

@@ -11,7 +11,8 @@ import { Transfer } from './transfer.model';
   templateUrl: './transfer.component.html'
 })
 export class TransferComponent implements OnInit {
-  accounts: Array<Account>;
+  myAccounts: Array<Account>;
+  otherAccounts: Array<Account>;
   transferForm: FormGroup;
 
   constructor(
@@ -22,7 +23,9 @@ export class TransferComponent implements OnInit {
 
   ngOnInit() {
     this.accountsService.getAccounts()
-      .subscribe(result => this.accounts = result);
+      .subscribe(result => {
+        this.filterAccounts(result);
+      });
 
     this.initializeForm();
   }
@@ -53,5 +56,13 @@ export class TransferComponent implements OnInit {
       amount: [null, Validators.required],
       memo: ['']
     });
+  }
+
+  private filterAccounts(accounts: Array<Account>): void {
+    if (!accounts.length) {
+      return;
+    }
+    this.myAccounts = accounts.filter(account => account.mine);
+    this.otherAccounts = accounts.filter(account => !account.mine);
   }
 }

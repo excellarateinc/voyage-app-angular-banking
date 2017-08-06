@@ -3,7 +3,7 @@
     <md-card-title>Balance History</md-card-title>
     <md-spinner *ngIf="working"></md-spinner>
     <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
-      <div fxFlex="50">
+      <div fxFlex="50" *ngIf="transactionHistory?.length <= 2">
         <canvas baseChart *ngIf="lineChart.data.length > 0"
           [datasets]="lineChart.data"
           [labels]="lineChart.labels"
