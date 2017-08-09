@@ -1,5 +1,5 @@
 <div fxLayout="row">
-  <md-card fxFlex="40" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <md-card-title>Create Account</md-card-title>
     <form [formGroup]="accountForm" (ngSubmit)="createAccount()" novalidate>
       <div fxLayout="column">
@@ -17,7 +17,7 @@
             </md-error>
           </md-input-container>
         </div>
-        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" style="margin-top: 20px;">
+        <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" style="margin-top: 30px;">
           <button md-raised-button color="primary" type="submit">
             Create
           </button>

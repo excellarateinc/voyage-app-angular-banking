@@ -1,13 +1,12 @@
 <div fxLayout="row">
-  <md-card fxFlex="50" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
+  <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <md-card-title>Profile</md-card-title>
-    <!-- <form> -->
       <div fxLayout="row">
-        <div fxLayout="column" fxFlex="25">
+        <div fxLayout="column" fxFlex="25" fxShow fxHide.xs>
           <img src="../assets/images/profile-resize.jpg" alt="profile" style="max-width: 100px; width: 100%; height: auto; border-radius: 50% !important;" />
-          <div><h3>Rob Louie</h3></div>
-          <div>Platinum HSA</div>
-          <div>Gold FSA</div>
+          <div style="margin-left:15px">
+            <h3>Rob Louie</h3>
+          </div>
         </div>
         <div fxLayout="column" fxFlex>
           <md-input-container fxFlex>
@@ -22,14 +21,11 @@
           <md-input-container fxFlex>
             <input mdInput placeholder="State">
           </md-input-container>
-          <div fxLayout="row">
+          <div fxLayout="row" style="margin-top:30px;">
             <span fxFlex></span>
-            <button fxFlex.xs="50" fxFlex.lg="40" md-button>Reset Password</button>
-            <button fxFlex.xs="50" fxFlex.lg="40" md-raised-button color="primary" style="margin-left: 15px;">Save Changes</button>
+            <button fxFlex="50" fxFlex.xs="100" fxFlex.lg="40" fxFlex.xl="40" md-raised-button color="primary" >Save Changes</button>
           </div>
         </div>
       </div>
-
-    <!-- </form> -->
   </md-card>
 </div>
