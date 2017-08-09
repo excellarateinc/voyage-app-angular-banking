@@ -15,7 +15,7 @@
         </div>
         <div fxLayout="row">
           <md-input-container fxFlex>
-            <input mdInput placeholder="Amount" formControlName="amount" required>
+            <input mdInput placeholder="Amount" formControlName="amount" type="number" required>
             <md-error *ngIf="transferForm.controls['amount'].hasError('required')">
               Amount is required
             </md-error>
