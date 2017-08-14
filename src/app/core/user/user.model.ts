@@ -6,4 +6,5 @@ export class User {
   id: string;
   isActive: boolean;
   isVerifyRequired: boolean;
+  roles: Array<string>;
 }

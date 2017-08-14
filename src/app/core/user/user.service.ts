@@ -6,12 +6,18 @@ import { User } from './user.model';
 import { UserStatus } from './user-status.model';
 
 @Injectable()
-export class UserAdminService {
+export class UserService {
 
   constructor(private http: Http) { }
 
   getUsers(): Observable<Array<User>> {
     return this.http.get(`${environment.API_URL}/users`)
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.http.get(`${environment.API_URL}/users/me`)
       .map(response => response.json())
       .catch(error => Observable.throw(error.json()));
   }

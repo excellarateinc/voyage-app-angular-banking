@@ -7,7 +7,6 @@
       </md-select>
       <md-list *ngIf="selectedUser != null">
         <md-list-item>
-          <h3 md-line>{{selectedUser.username}}</h3>
           <p md-line>
             <md-checkbox color="primary" [(ngModel)]="selectedUser.isActive" (change)="onToggle()">
               Is Active

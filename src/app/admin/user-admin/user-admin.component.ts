@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserAdminService } from './user-admin.service';
-import { User } from './user.model';
-import { UserStatus } from './user-status.model';
+import { User } from '../../core/user/user.model';
+import { UserStatus } from '../../core/user/user-status.model';
+import { UserService } from '../../core/user/user.service';
 
 @Component({
   selector: 'app-user-admin',
@@ -12,10 +12,10 @@ export class UserAdminComponent implements OnInit {
   users: Array<User>;
   selectedUser: User;
 
-  constructor(private userAdminService: UserAdminService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.userAdminService.getUsers()
+    this.userService.getUsers()
       .subscribe(result => this.users = result);
   }
 
@@ -23,7 +23,7 @@ export class UserAdminComponent implements OnInit {
     const userStatus = new UserStatus();
     userStatus.isActive = this.selectedUser.isActive;
     userStatus.isVerifyRequired = this.selectedUser.isVerifyRequired;
-    this.userAdminService.toggleStatus(this.selectedUser.id, userStatus)
+    this.userService.toggleStatus(this.selectedUser.id, userStatus)
       .subscribe(result => { });
   }
 }
