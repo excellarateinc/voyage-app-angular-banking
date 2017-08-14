@@ -5,7 +5,6 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UserAdminComponent } from './user-admin/user-admin.component';
-import { UserAdminService } from './user-admin/user-admin.service';
 
 @NgModule({
   imports: [
@@ -15,9 +14,6 @@ import { UserAdminService } from './user-admin/user-admin.service';
     FlexLayoutModule,
     FormsModule
   ],
-  declarations: [UserAdminComponent],
-  providers: [
-    UserAdminService
-  ]
+  declarations: [UserAdminComponent]
 })
 export class AdminModule { }
