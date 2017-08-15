@@ -31,14 +31,10 @@ export class CreateAccountComponent implements OnInit {
     const account = this.accountForm.value as Account;
     this.accountsService.createAccount(account)
       .subscribe(result => {
-        this.snackBar.open(`${result.name} created successfully`, null, {
-          duration: 3000,
-        });
+        this.snackBar.open(`${result.name} created successfully`, null, { duration: 5000 });
         this.router.navigate(['/examples/banking/dashboard']);
-      }, (error) => {
-        this.snackBar.open(error[0].errorDescription, null, {
-          duration: 3000,
-        });
+      }, error => {
+        this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
       });
   }
 
