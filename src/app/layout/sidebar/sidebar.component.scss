@@ -13,6 +13,10 @@ md-sidenav ul {
   height: calc(100% - 64px);
 }
 
+.sidenav-height-mobile-form {
+  height: 100%;
+}
+
 @media screen and (max-width: 600px) {
   /* The toolbar shrinks to 56px at this breakpoint, need to update the sidenav height in that case. */
   .sidenav-height {
