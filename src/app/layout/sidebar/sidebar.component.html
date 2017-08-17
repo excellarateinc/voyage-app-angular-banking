@@ -68,7 +68,7 @@
 
   <div class="main-content full-height">
     <router-outlet></router-outlet>
-    <span class="done" *ngIf="isAuthenticated">
+    <span class="done" *ngIf="isAuthenticated && !inMobileForm">
       <button md-fab>
         <md-icon>add</md-icon>
       </button>
