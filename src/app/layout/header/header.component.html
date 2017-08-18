@@ -1,9 +1,9 @@
 <md-toolbar color="primary" *ngIf="!inMobileForm">
-  <span (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
+  <button class="mat-button menu-button" (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
     <md-icon class="clickable menu-icon">menu</md-icon>
-  </span>
+  </button>
   <span routerLink="/" class="clickable">
-    <span class="nav-item-container" style="color:white; margin-left: 10px;">
+    <span class="nav-item-container" style="color:white;">
       Acme Bank
     </span>
   </span>
