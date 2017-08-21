@@ -5,6 +5,8 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExamplesRoutingModule } from './examples-routing.module';
+import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
 import { TransferComponent } from './banking/transfer/transfer.component';
@@ -18,7 +20,9 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
     MaterialModule,
     FlexLayoutModule,
     ChartsModule,
-    ExamplesRoutingModule
+    ExamplesRoutingModule,
+    FileUploadModule,
+    SharedModule
   ],
   declarations: [AccountsDashboardComponent, ProfileComponent, TransferComponent, CreateAccountComponent],
   exports: [AccountsDashboardComponent],

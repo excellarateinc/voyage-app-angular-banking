@@ -1,3 +1,5 @@
+import { Phone } from './phone.model';
+
 export class User {
   email: string;
   firstName: string;
@@ -7,4 +9,6 @@ export class User {
   isActive: boolean;
   isVerifyRequired: boolean;
   roles: Array<string>;
+  phones: Array<Phone>;
+  profileImage: string;
 }
