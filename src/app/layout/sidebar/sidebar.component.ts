@@ -37,8 +37,8 @@ export class SidebarComponent implements OnInit {
     }
 
     this.userService.getCurrentUser()
-      .subscribe(result => {
-        this.isAdmin = result.roles.indexOf('Administrator') !== -1;
+      .subscribe(user => {
+        this.isAdmin = user.roles.indexOf('Administrator') !== -1;
       });
   }
 

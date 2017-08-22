@@ -24,8 +24,13 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
     FileUploadModule,
     SharedModule
   ],
-  declarations: [AccountsDashboardComponent, ProfileComponent, TransferComponent, CreateAccountComponent],
-  exports: [AccountsDashboardComponent],
+  declarations: [
+    AccountsDashboardComponent,
+    ProfileComponent,
+    TransferComponent,
+    CreateAccountComponent
+  ],
+  exports: [ AccountsDashboardComponent ],
   providers: [ AccountsService ]
 })
 export class ExamplesModule { }
