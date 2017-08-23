@@ -35,10 +35,12 @@
             </span>
           </div>
         </div>
-        <div fxLayout="row" style="margin-top:60px;">
-          <button fxFlex.gt-sm (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+        <div fxLayout="column" style="margin-top:60px;">
+          <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
           <span>&nbsp;</span>
-          <a fxFlex.gt-sm routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
+          <div fxLayout="row">
+            <span style="margin: 0 auto;">Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
+          </div>
         </div>
       </form>
     </div>
@@ -49,12 +51,12 @@
 <!-- Mobile -->
 <div fxLayout="column" fxHide fxShow.xs fxShow.sm fxFlexFill style="margin-left:10px; margin-right:10px;">
   <span style="margin-top: auto;">&nbsp;</span>
-  <div fxLayout="row">
+  <div fxLayout="row" style="min-height:55px;">
     <span fxFlex></span>
-    <i class="material-icons" style="font-size:60px; color: #009b98;;">account_balance</i>
+    <i class="material-icons" style="font-size:60px; color: #009b98;">account_balance</i>
     <span fxFlex></span>
   </div>
-  <div fxLayout="row" style="margin-top:10px;">
+  <div fxLayout="row" style="margin-top:10px;min-height:40px;">
     <span fxFlex></span>
     <div style="font-size: 40px;">
       Acme Bank
@@ -82,10 +84,14 @@
       </div>
       <span>&nbsp;</span>
       <span>&nbsp;</span>
-      <div>
-        <button fxFlex.gt-sm (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+      <div fxLayout="column">
+        <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
         <span>&nbsp;</span>
-        <a fxFlex.gt-sm routerLink="/authentication/register" md-raised-button>SIGN UP</a>
+        <div fxLayout="row">
+          <span style="font-size:16px;margin: 0 auto;">
+            Don't have an account? <a routerLink="/authentication/register">Sign Up</a>
+          </span>
+        </div>
       </div>
     </div>
   </form>
