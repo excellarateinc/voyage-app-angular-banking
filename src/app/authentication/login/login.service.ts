@@ -14,9 +14,11 @@ export class LoginService {
     const body = `username=${login.username}&password=${login.password}&client_id=${environment.OAUTH_CLIENT_ID}
 &client_secret=${environment.OAUTH_CLIENT_SECRET}
 &grant_type=password`;
+
     const options: RequestOptionsArgs = { headers: new Headers() };
     options.headers.set('grant_type', 'password');
     options.headers.set('content-type', 'application/x-www-form-urlencoded');
+
     return this.http.post(`${environment.SERVER_URL}/oauth/token`, body, options)
       .map((response: any) => {
         this.authService.setToken(response.json().access_token);
@@ -24,5 +26,4 @@ export class LoginService {
       })
       .catch(error => Observable.throw(error.json()));
   }
-
 }
