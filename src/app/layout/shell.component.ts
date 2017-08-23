@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ChangeDetectorRef } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
@@ -10,7 +10,7 @@ import { BroadcastService } from '../core/broadcast.service';
   selector: 'app-shell',
   templateUrl: './shell.component.html'
 })
-export class ShellComponent implements OnInit, OnDestroy {
+export class ShellComponent implements OnInit {
   isMobile: boolean;
   isAuthenticated: boolean;
   @ViewChild('sidebar') sidebar: SidebarComponent;
@@ -36,11 +36,6 @@ export class ShellComponent implements OnInit, OnDestroy {
         this.inMobileForm = this.isMobile && inMobileForm;
         this.cdr.detectChanges();
       });
-  }
-
-  ngOnDestroy(): void {
-    this.watcher.unsubscribe();
-    this.broadcast.unsubscribe();
   }
 
   onToggleSidebar($event: any): void {
