@@ -1,6 +1,7 @@
-<div fxLayout="row" fxShow fxHide.xs fxHide.sm>
+<!-- Tablet / Desktop -->
+<div fxLayout="row" fxShow fxHide.xs fxHide.sm style="">
   <span fxFlex></span>
-  <md-card fxFlex fxFlex.sm="66" fxFlex.xs="100" fxFlex.md="66">
+  <md-card fxFlex fxFlex.sm="66" fxFlex.xs="100" fxFlex.md="50">
     <div fxLayout="column">
       <div fxLayout="row" style="margin-top:25px;">
         <span fxFlex></span>
@@ -14,36 +15,80 @@
         </div>
         <span fxFlex></span>
       </div>
-      <div fxLayout="row" style="margin-top:60px;">
-        <a fxFlex.gt-sm (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
-        <span>&nbsp;</span>
-        <a fxFlex.gt-sm routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
-      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top:50px">
+        <div fxLayout="column">
+          <md-input-container>
+            <input mdInput placeholder="Username" formControlName="username" required>
+            <md-error *ngIf="loginForm.controls['username'].hasError('required')">
+              Username is required
+            </md-error>
+          </md-input-container>
+          <md-input-container style="margin-top:20px">
+            <input mdInput placeholder="Password" formControlName="password" type="password" required>
+            <md-error *ngIf="loginForm.controls['password'].hasError('required')">
+              Password is required
+            </md-error>
+          </md-input-container>
+          <div *ngIf="loginFailed">
+            <span style="color:lightcoral">
+              Invalid username or password.
+            </span>
+          </div>
+        </div>
+        <div fxLayout="row" style="margin-top:60px;">
+          <button fxFlex.gt-sm (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+          <span>&nbsp;</span>
+          <a fxFlex.gt-sm routerLink="/authentication/register" color="accent" md-raised-button>SIGN UP</a>
+        </div>
+      </form>
     </div>
   </md-card>
   <span fxFlex></span>
 </div>
 
-<div fxLayout="column" fxHide fxShow.xs fxShow.sm fxFlexFill style="margin-left:10px; margin-right:10px; background-color: #2B3D53">
+<!-- Mobile -->
+<div fxLayout="column" fxHide fxShow.xs fxShow.sm fxFlexFill style="margin-left:10px; margin-right:10px;">
   <span style="margin-top: auto;">&nbsp;</span>
   <div fxLayout="row">
     <span fxFlex></span>
-    <i class="material-icons" style="font-size:60px; color: #009b98;">account_balance</i>
+    <i class="material-icons" style="font-size:60px; color: #009b98;;">account_balance</i>
     <span fxFlex></span>
   </div>
   <div fxLayout="row" style="margin-top:10px;">
     <span fxFlex></span>
-    <div style="font-size: 40px; color: white;">
+    <div style="font-size: 40px;">
       Acme Bank
     </div>
     <span fxFlex></span>
   </div>
-  <div fxLayout="column" style="margin-top: auto; margin-left:10px; margin-right: 10px;">
-    <a (click)="goToOauthLogin()" color="primary" md-raised-button>LOGIN</a>
-    <span>&nbsp;</span>
-    <a routerLink="/authentication/register" md-raised-button>SIGN UP</a>
-    <span>&nbsp;</span>
-  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top: auto; margin-left:15px; margin-right: 15px;">
+    <div fxLayout="column">
+      <md-input-container>
+        <input mdInput placeholder="Username" formControlName="username" required>
+        <md-error *ngIf="loginForm.controls['username'].hasError('required')">
+          Username is required
+        </md-error>
+      </md-input-container>
+      <md-input-container style="margin-top:15px">
+        <input mdInput placeholder="Password" formControlName="password" type="password" required>
+        <md-error *ngIf="loginForm.controls['password'].hasError('required')">
+          Password is required
+        </md-error>
+      </md-input-container>
+      <div *ngIf="loginFailed">
+        <span style="color:lightcoral">
+          Invalid username or password.
+        </span>
+      </div>
+      <span>&nbsp;</span>
+      <span>&nbsp;</span>
+      <div>
+        <button fxFlex.gt-sm (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+        <span>&nbsp;</span>
+        <a fxFlex.gt-sm routerLink="/authentication/register" md-raised-button>SIGN UP</a>
+      </div>
+    </div>
+  </form>
   <span>&nbsp;</span>
   <span>&nbsp;</span>
 </div>
