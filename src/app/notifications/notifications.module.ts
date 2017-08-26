@@ -7,24 +7,26 @@ import { environment } from '../../environments/environment';
 import { SignalRModule } from 'ng2-signalr';
 import { SignalRConfiguration } from 'ng2-signalr';
 
-export function createConfig(): SignalRConfiguration {
-  const c = new SignalRConfiguration();
-  c.hubName = 'notificationHub';
-  c.url = environment.SIGNALR_URL;
-  c.qs = { access_token: sessionStorage.getItem('voyage.token') };
-  return c;
+export function getConfiguration(): SignalRConfiguration {
+  const config = new SignalRConfiguration();
+  config.hubName = 'notificationHub';
+  config.url = environment.SIGNALR_URL;
+  config.qs = { access_token: sessionStorage.getItem('voyage.token') };
+  return config;
 }
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    SignalRModule.forRoot(createConfig)
+    SignalRModule.forRoot(getConfiguration)
   ],
   declarations: [NotificationsIconComponent],
   providers: [
     NotificationsService
   ],
-  exports: [NotificationsIconComponent]
+  exports: [
+    NotificationsIconComponent
+  ]
 })
 export class NotificationsModule { }
