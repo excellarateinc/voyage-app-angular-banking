@@ -11,7 +11,7 @@ export function createConfig(): SignalRConfiguration {
   const c = new SignalRConfiguration();
   c.hubName = 'notificationHub';
   c.url = environment.SIGNALR_URL;
-  c.logging = true;
+  c.qs = { access_token: sessionStorage.getItem('voyage.token') };
   return c;
 }
 

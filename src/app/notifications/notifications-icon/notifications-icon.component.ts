@@ -8,7 +8,8 @@ import { SignalR } from 'ng2-signalr';
   templateUrl: './notifications-icon.component.html'
 })
 export class NotificationsIconComponent implements OnInit {
-  notifications: Array<Notification>;
+  notifications: Array<Notification> = [];
+  private readonly notificationMessage = 'newNotification';
 
   constructor(
     private notificationsService: NotificationsService,
@@ -17,8 +18,8 @@ export class NotificationsIconComponent implements OnInit {
   ngOnInit() {
     this.getNotifications();
     this.signalR.connect().then(connection => {
-      connection.listenFor('broadcastMessage').subscribe((notification: string) => {
-        this.notifications.push(JSON.parse(notification));
+      connection.listenFor(this.notificationMessage).subscribe((notification: Notification) => {
+        this.notifications.unshift(notification);
       });
     });
   }
@@ -37,6 +38,6 @@ export class NotificationsIconComponent implements OnInit {
 
   markAllRead(): void {
     this.notificationsService.markAllRead()
-      .subscribe(() => this.notifications = null);
+      .subscribe(() => this.notifications = []);
   }
 }
