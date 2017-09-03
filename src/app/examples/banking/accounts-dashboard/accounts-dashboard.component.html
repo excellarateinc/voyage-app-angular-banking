@@ -4,10 +4,13 @@
       <h4 class="card-title">My Accounts</h4>
     </div>
     <div fxLayout="column">
-      <div fxLayout="row" *ngFor="let account of accounts">
-        <h3>{{account.name}}</h3>
+      <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
+        <div fxLayout="column">
+          <span class="activity-description">{{account.name}}</span>
+          <span class="activity-account">#{{account.accountNumber}}</span>
+        </div>
         <span fxFlex></span>
-        <h3>{{account.balance | currency:'USD':true}}</h3>
+        <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
       </div>
     </div>
   </md-card>
@@ -27,20 +30,26 @@
   </md-card>
 </div>
 
-<div fxLayout="row">
-  <md-card fxFlex>
-    <h4 class="card-title">Recent Activity</h4>
-    <div fxLayout="row" class="voyage-table-header">
-      <div fxFlex>Date</div>
-      <div fxFlex>Account</div>
-      <div fxFlex fxHide.xs>Description</div>
-      <div fxFlex>Amount</div>
+<div fxLayout="row" fxLayout.lt-lg="column">
+  <md-card fxFlex.lt-lg="100" fxFlex="100">
+    <div fxLayout="row">
+      <h4 class="card-title">Recent Activity</h4>
     </div>
-    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of transactions; let i = index;">
-      <div fxFlex>{{transaction.date | date}}</div>
-      <div fxFlex>{{transaction.accountName}}</div>
-      <div fxFlex fxHide.xs>{{transaction.description}}</div>
-      <div fxFlex>{{transaction.type == 0 ? '-' : '+'}}{{transaction.amount | currency:'USD':true}}</div>
+    <div fxLayout="row" class="voyage-table-row" *ngFor="let transaction of transactions;">
+      <div fxLayout="column" class="date-stamp">
+        <span class="month">{{transaction.date | date:'MMM'}}</span>
+        <span class="day">{{transaction.date | date:'d'}}</span>
+      </div>
+      <div fxLayout="column" style="margin-left:10px;">
+        <span class="activity-description">{{transaction.description}}</span>
+        <span class="activity-account">{{transaction.accountName}}</span>
+      </div>
+      <span fxFlex></span>
+      <div style="margin-right:10px;">
+        <span class="activity-amount" [ngClass]="{'withdrawal-action': transaction.type == 0}">
+          {{transaction.type == 0 ? '-' : ''}}{{transaction.amount | currency:'USD':true}}
+        </span>
+      </div>
     </div>
   </md-card>
 </div>

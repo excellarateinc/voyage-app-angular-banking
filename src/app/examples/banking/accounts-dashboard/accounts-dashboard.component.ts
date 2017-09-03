@@ -9,7 +9,8 @@ import { TransactionType } from '../transaction-type.enum';
 
 @Component({
   selector: 'app-accounts-dashboard',
-  templateUrl: './accounts-dashboard.component.html'
+  templateUrl: './accounts-dashboard.component.html',
+  styleUrls: ['./accounts-dashboard.component.scss']
 })
 export class AccountsDashboardComponent implements OnInit {
   transactions: Array<Transaction>;
@@ -46,19 +47,19 @@ export class AccountsDashboardComponent implements OnInit {
       },
       colors: [
         {
-          backgroundColor: '#0d47a1'
+          backgroundColor: '#00838f'
         },
         {
-          backgroundColor: '#283593'
+          backgroundColor: '#37474f'
         },
         {
-          backgroundColor: '#5f5fc4'
+          backgroundColor: '#005662'
         },
         {
-          backgroundColor: '#58a5f0'
+          backgroundColor: '#4fb3bf'
         }
       ],
-      legend: true,
+      legend: false,
       type: 'bar'
     };
 
