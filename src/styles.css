@@ -56,22 +56,6 @@ https://github.com/angular/material2/issues/998 */
   cursor: pointer;
 }
 
-.voyage-table-header {
-  font-weight:bold;
-  border-bottom: 1px solid #dddddd;
-  padding-bottom: 5px;
-}
-
-.voyage-table-row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #dddddd;
-}
-
-.dark-row {
-  background-color: #f6f6f6;
-}
-
 .badge {
   display: inline-block;
   min-width: 10px;
@@ -99,4 +83,14 @@ https://github.com/angular/material2/issues/998 */
 
 .full-height {
   height: 100% !important;
+}
+
+.action-buttons {
+  margin-top: 10px;
+}
+
+.divider {
+  display: block;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+  width: 100%
 }

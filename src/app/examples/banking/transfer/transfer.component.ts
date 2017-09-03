@@ -1,18 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { AccountsService } from '../accounts.service';
 import { Account } from '../account.model';
 import { Transfer } from './transfer.model';
-import { BroadcastService } from '../../../core/broadcast.service';
 
 @Component({
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
   styleUrls: ['./transfer.component.scss']
 })
-export class TransferComponent implements OnInit, OnDestroy {
+export class TransferComponent implements OnInit {
   accounts: Array<Account>;
   transferForm: FormGroup;
 
@@ -20,20 +19,13 @@ export class TransferComponent implements OnInit, OnDestroy {
     private accountsService: AccountsService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private snackBar: MdSnackBar,
-    private broadcastService: BroadcastService) { }
+    private snackBar: MdSnackBar) { }
 
   ngOnInit() {
     this.accountsService.getAllAccounts()
       .subscribe(result => this.accounts = result);
 
     this.initializeForm();
-
-    this.broadcastService.changeMobileFormStatus(true);
-  }
-
-  ngOnDestroy() {
-    this.broadcastService.changeMobileFormStatus(false);
   }
 
   transfer(): void {

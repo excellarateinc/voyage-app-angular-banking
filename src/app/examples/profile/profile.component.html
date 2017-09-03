@@ -53,10 +53,13 @@
                 <br />
               </span>
             </div>
-            <div fxLayout="row" style="margin-top:30px;">
-              <span fxFlex></span>
-              <button fxFlex="50" fxFlex.xs="100" fxFlex.lg="40" fxFlex.xl="40" md-raised-button color="primary">
+            <div fxLayout="column" style="margin-top:30px;">
+              <button md-raised-button color="primary">
                 Save Changes
+              </button>
+              <span>&nbsp;</span>
+              <button routerLink="/examples/banking/dashboard" color="accent" md-raised-button>
+                Cancel
               </button>
             </div>
         </form>

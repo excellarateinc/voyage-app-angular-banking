@@ -10,8 +10,6 @@ export class HeaderComponent implements OnInit {
   isMobile = false;
   @Input()
   isAuthenticated = false;
-  @Input()
-  inMobileForm = false;
   @Output() onToggleSidebar = new EventEmitter<void>();
 
   constructor() { }
