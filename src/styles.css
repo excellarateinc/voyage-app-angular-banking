@@ -104,3 +104,9 @@ https://github.com/angular/material2/issues/998 */
 .action-buttons {
   margin-top: 10px;
 }
+
+.divider {
+  display: block;
+  border-top: 1px solid rgba(0, 0, 0, .12);
+  width: 100%
+}

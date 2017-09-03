@@ -102,7 +102,7 @@ $voyage-theme-dark: mat-light-theme($voyage-app-primary, $voyage-app-accent, $vo
 //
 // Define custom palettes for My Bank.
 //
-$voyage-mat-darkgreen: (
+$voyage-mat-blue: (
   50: #e6e8ea,
   100: #c0c5cc,
   200: #969faa,
@@ -134,7 +134,7 @@ $voyage-mat-darkgreen: (
   )
 );
 
-$voyage-mat-lightgreen: (
+$voyage-mat-gray: (
   50: #ff8d54,
   100: #ff8d54,
   200: #ff8d54,
@@ -146,7 +146,7 @@ $voyage-mat-lightgreen: (
   800: #ff8d54,
   900: #ff8d54,
   A100: #efefef,
-  A200: #bdbdbd,
+  A200: #6c6d6e,
   A400: #8d8d8d,
   contrast: (
     50: $black-87-opacity,
@@ -166,8 +166,8 @@ $voyage-mat-lightgreen: (
   )
 );
 
-$voyage-bank-primary: mat-palette($voyage-mat-darkgreen, A200, A100, A400);
-$voyage-bank-accent:  mat-palette($voyage-mat-lightgreen, A200, A100, A400);
+$voyage-bank-primary: mat-palette($voyage-mat-blue, A200, A100, A400);
+$voyage-bank-accent:  mat-palette($voyage-mat-gray, A200, A100, A400);
 $voyage-bank-warn:    mat-palette($mat-red);
 $voyage-bank-theme: mat-light-theme($voyage-bank-primary, $voyage-bank-accent, $voyage-bank-warn);
 

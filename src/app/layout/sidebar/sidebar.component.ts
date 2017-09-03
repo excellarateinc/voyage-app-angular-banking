@@ -22,8 +22,6 @@ export class SidebarComponent implements OnInit {
   }
   @Input()
   isAuthenticated = false;
-  @Input()
-  inMobileForm = false;
   @ViewChild('sidenav') sidenav: MdSidenav;
   mobile: boolean;
   toggleTheme: false;

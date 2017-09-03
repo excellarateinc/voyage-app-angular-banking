@@ -1,6 +1,5 @@
 <app-header
   [isMobile]="isMobile"
-  [inMobileForm]="inMobileForm"
   [isAuthenticated]="isAuthenticated"
   (onToggleSidebar)="onToggleSidebar($event)"
   [ngClass]="{ 'voyage-theme-dark': sidebar.toggleTheme }">
@@ -9,7 +8,6 @@
 <app-sidebar
   #sidebar
   [isMobile]="isMobile"
-  [inMobileForm]="inMobileForm"
   [isAuthenticated]="isAuthenticated"
   [ngClass]="{ 'voyage-theme-dark': sidebar.toggleTheme }">
 </app-sidebar>

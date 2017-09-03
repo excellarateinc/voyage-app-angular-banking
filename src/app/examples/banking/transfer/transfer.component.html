@@ -1,5 +1,5 @@
 <!-- Tablet / Desktop -->
-<div fxLayout="row" fxShow fxHide.xs fxHide.sm>
+<div fxLayout="row">
   <md-card fxFlex="60" fxFlex.md="100" fxFlex.sm="100" fxFlex.xs="100">
     <md-card-title>New Transfer</md-card-title>
     <form [formGroup]="transferForm" (ngSubmit)="transfer()" novalidate>
@@ -39,52 +39,4 @@
       </div>
     </form>
   </md-card>
-</div>
-
-<!-- Mobile -->
-<div fxHide fxShow.xs fxShow.sm style="height:100%; background-color: white;">
-  <form fxLayout="column" [formGroup]="transferForm" (ngSubmit)="transfer()" novalidate style="height:100%;">
-    <div class="action-bar">
-      <div fxLayout="row">
-        <div fxFlex style="margin-top: 5px; margin-left:15px;">
-          <a style="color:rgba(0, 0, 0, 0.35); margin-top:5px;" routerLink="/examples/banking/dashboard">
-            <md-icon class="clickable menu-icon">close</md-icon>
-          </a>
-        </div>
-        <span fxFlex="75"></span>
-        <div fxFlex style="margin-right:5px;">
-          <button md-button color="primary" type="submit">
-            TRANSFER
-          </button>
-        </div>
-      </div>
-    </div>
-    <md-card fxFlex style="margin-bottom: 0;">
-      <div fxLayout="column">
-        <div fxLayout="row">
-          <md-select placeholder="From Account" fxFlex formControlName="fromAccountId" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option *ngFor="let account of myAccounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
-          </md-select>
-        </div>
-        <div fxLayout="row">
-          <md-select placeholder="To Account" fxFlex formControlName="toAccountId" style="margin-top:15px; margin-bottom:30px;" required>
-            <md-option *ngFor="let account of accounts" [value]="account.accountId">{{account.name}} {{account.accountNumber}}</md-option>
-          </md-select>
-        </div>
-        <div fxLayout="row">
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Amount" formControlName="amount" type="number" required>
-            <md-error *ngIf="transferForm.controls['amount'].hasError('required')">
-              Amount is required
-            </md-error>
-          </md-input-container>
-        </div>
-        <div fxLayout="row" style="margin-top:10px;">
-          <md-input-container fxFlex>
-            <input mdInput placeholder="Memo" formControlName="memo">
-          </md-input-container>
-        </div>
-      </div>
-    </md-card>
-  </form>
 </div>

@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MdSidenav } from '@angular/material';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { BroadcastService } from '../core/broadcast.service';
 
 @Component({
   selector: 'app-shell',
@@ -14,15 +13,11 @@ export class ShellComponent implements OnInit {
   isMobile: boolean;
   isAuthenticated: boolean;
   @ViewChild('sidebar') sidebar: SidebarComponent;
-  inMobileForm: boolean;
   private watcher: Subscription;
-  private broadcast: Subscription;
 
   constructor(
     private authService: AuthenticationService,
-    private media: ObservableMedia,
-    private broadcastService: BroadcastService,
-    private cdr: ChangeDetectorRef) { }
+    private media: ObservableMedia) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.getToken() != null;
@@ -30,12 +25,6 @@ export class ShellComponent implements OnInit {
     this.watcher = this.media.subscribe((change: MediaChange) => {
       this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
     });
-
-    this.broadcast = this.broadcastService.inMobileForm$
-      .subscribe(inMobileForm => {
-        this.inMobileForm = this.isMobile && inMobileForm;
-        this.cdr.detectChanges();
-      });
   }
 
   onToggleSidebar($event: any): void {
