@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DataSource } from '@angular/cdk';
+import { Observable } from 'rxjs/Observable';
 import { AccountsService } from '../accounts.service';
 import { TransactionHistory } from '../transaction-history.model';
+import { Account } from '../account.model';
 import { Transaction } from '../transaction.model';
 import { TransactionType } from '../transaction-type.enum';
 
@@ -9,44 +12,65 @@ import { TransactionType } from '../transaction-type.enum';
   templateUrl: './accounts-dashboard.component.html'
 })
 export class AccountsDashboardComponent implements OnInit {
-  transactionHistory: Array<TransactionHistory>;
-  lineChart: any;
+  transactions: Array<Transaction>;
+  accounts: Array<Account>;
+  barChart: any;
   doughnutCharts: any;
   working = false;
 
   constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
-    this.initializeCharts();
     this.working = true;
-    this.accountsService.getTransactionHistory()
-      .subscribe(result => {
-        this.transactionHistory = result;
-        this.buildLineChart(this.transactionHistory);
-        this.buildDoughnutCharts(this.transactionHistory);
+
+    this.accountsService.getAccounts()
+      .subscribe(accounts => {
+        this.accounts = accounts;
         this.working = false;
+        this.buildBarChart(this.accounts);
+      });
+
+    this.accountsService.getRecentTransactions()
+      .subscribe(transactions => {
+        this.transactions = transactions;
       });
   }
 
-  private initializeCharts() {
-    this.lineChart = {
+  private buildBarChart(accounts: Array<Account>): void {
+    this.barChart = {
       data: [],
-      labels: ['', '', '', '', ''],
-      options: { },
+      labels: ['Current Balance'],
+      options: {
+        scaleShowVerticalLines: false,
+        responsive: true
+      },
       colors: [
         {
-          backgroundColor: 'rgba(60, 191, 164, 0.2)',
-          borderColor: 'rgba(60, 191, 164, 1)'
+          backgroundColor: '#0d47a1'
         },
         {
-          backgroundColor: 'rgba(55, 147, 204, 0.2)',
-          borderColor: 'rgba(55, 147, 204, 1)'
+          backgroundColor: '#283593'
+        },
+        {
+          backgroundColor: '#5f5fc4'
+        },
+        {
+          backgroundColor: '#58a5f0'
         }
       ],
       legend: true,
-      type: 'line'
+      type: 'bar'
     };
 
+    for (let i = 0; i < accounts.length; i++) {
+      this.barChart.data.push({
+        data: [ accounts[i].balance ],
+        label: accounts[i].name
+      });
+    }
+  }
+
+  private buildDoughnutCharts(history: Array<TransactionHistory>): any {
     this.doughnutCharts = {
       charts: [],
       labels: ['Deposits', 'Withdrawals'],
@@ -56,20 +80,6 @@ export class AccountsDashboardComponent implements OnInit {
       ],
       options: { maintainAspectRatio: true }
     };
-  }
-
-  private buildLineChart(history: Array<TransactionHistory>): void {
-    for (const item of history) {
-      const lineData: any = { data: [], label: item.accountName };
-      const transactionsCopy = Object.assign([], item.transactions);
-      for (const transaction of transactionsCopy.reverse()) {
-        lineData.data.push(transaction.balance);
-      }
-      this.lineChart.data.push(lineData);
-    }
-  }
-
-  private buildDoughnutCharts(history: Array<TransactionHistory>): any {
     for (let i = 0; i < history.length; i++) {
       const data = this.buildData(history[i]);
       this.doughnutCharts.charts.push({ data: data, title: history[i].accountName });

@@ -1,44 +1,46 @@
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
-  <md-card fxFlex>
-    <md-card-title>Balance History</md-card-title>
-    <md-spinner *ngIf="working"></md-spinner>
-    <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
-      <div fxFlex="50" *ngIf="transactionHistory?.length <= 2">
-        <canvas baseChart *ngIf="lineChart.data.length > 0"
-          [datasets]="lineChart.data"
-          [labels]="lineChart.labels"
-          [options]="lineChart.options"
-          [colors]="lineChart.colors"
-          [legend]="lineChart.legend"
-          [chartType]="lineChart.type"></canvas>
+<div fxLayout="row" fxLayout.lt-lg="column">
+  <md-card fxFlex.lt-lg="100" fxFlex="50">
+    <div fxLayout="row">
+      <h4 class="card-title">My Accounts</h4>
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" *ngFor="let account of accounts">
+        <h3>{{account.name}}</h3>
+        <span fxFlex></span>
+        <h3>{{account.balance | currency:'USD':true}}</h3>
       </div>
-      <div fxFlex="24" *ngFor="let chart of doughnutCharts.charts">
-        {{chart.title}} Breakdown
+    </div>
+  </md-card>
+  <md-card fxFlex.lt-lg="100" fxFlex="50">
+    <div fxLayout="row">
+      <h4 class="card-title">Account Balances</h4>
+    </div>
+    <div fxLayout="row" *ngIf="barChart != null">
         <canvas baseChart
-          [data]="chart.data"
-          [labels]="doughnutCharts.labels"
-          [chartType]="doughnutCharts.type"
-          [options]="doughnutCharts.options"
-          [colors]="doughnutCharts.colors"></canvas>
-      </div>
+          [datasets]="barChart.data"
+          [labels]="barChart.labels"
+          [options]="barChart.options"
+          [legend]="barChart.legend"
+          [colors]="barChart.colors"
+          [chartType]="barChart.type"></canvas>
     </div>
   </md-card>
 </div>
 
-<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column">
-  <md-card fxFlex *ngFor="let history of transactionHistory">
-    <md-card-title>{{history.accountName}} Activity</md-card-title>
+<div fxLayout="row">
+  <md-card fxFlex>
+    <h4 class="card-title">Recent Activity</h4>
     <div fxLayout="row" class="voyage-table-header">
       <div fxFlex>Date</div>
-      <div fxFlex="35" fxHide.xs>Description</div>
+      <div fxFlex>Account</div>
+      <div fxFlex fxHide.xs>Description</div>
       <div fxFlex>Amount</div>
-      <div fxFlex>Balance</div>
     </div>
-    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of history.transactions; let i = index;">
+    <div fxLayout="row" class="voyage-table-row" [ngClass]="{'dark-row': i % 2 === 0}" *ngFor="let transaction of transactions; let i = index;">
       <div fxFlex>{{transaction.date | date}}</div>
-      <div fxFlex="35" fxHide.xs>{{transaction.description}}</div>
+      <div fxFlex>{{transaction.accountName}}</div>
+      <div fxFlex fxHide.xs>{{transaction.description}}</div>
       <div fxFlex>{{transaction.type == 0 ? '-' : '+'}}{{transaction.amount | currency:'USD':true}}</div>
-      <div fxFlex>{{transaction.balance | currency:'USD':true}}</div>
     </div>
   </md-card>
 </div>

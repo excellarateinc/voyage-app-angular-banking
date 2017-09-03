@@ -14,8 +14,14 @@ export class AccountsService {
 
   constructor(private http: Http) { }
 
-  getAccounts(): Observable<Array<Account>> {
+  getAllAccounts(): Observable<Array<Account>> {
     return this.http.get(`${environment.API_URL}/banking/accounts`)
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
+  }
+
+  getAccounts(): Observable<Array<Account>> {
+    return this.http.get(`${environment.API_URL}/banking/accounts/me`)
       .map(response => response.json())
       .catch(error => Observable.throw(error.json()));
   }
@@ -26,7 +32,7 @@ export class AccountsService {
       .catch(error => Observable.throw(error.json()));
   }
 
-  getTransactionHistory(): Observable<Array<TransactionHistory>> {
+  getRecentTransactions(): Observable<Array<Transaction>> {
     return this.http.get(`${environment.API_URL}/banking/accounts/transactions`)
       .map(response => response.json())
       .catch(error => Observable.throw(error.json()));
