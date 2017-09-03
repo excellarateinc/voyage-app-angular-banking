@@ -16,9 +16,20 @@ md-card {
   margin-bottom: 10px;
 }
 
+.card-title {
+  color: #3a405b;
+  font-size: 1.125rem !important;
+  font-weight: 500 !important;
+}
+
+.card-divider {
+  margin-left: -1.5rem !important;
+  margin-right: -1.5rem !important;
+}
+
 @media only screen and (min-width: 960px) {
   md-card {
-    margin: 10px;
+    margin: 5px;
   }
 
   .main-content {

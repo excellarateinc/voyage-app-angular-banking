@@ -24,7 +24,7 @@ export class TransferComponent implements OnInit, OnDestroy {
     private broadcastService: BroadcastService) { }
 
   ngOnInit() {
-    this.accountsService.getAccounts()
+    this.accountsService.getAllAccounts()
       .subscribe(result => this.accounts = result);
 
     this.initializeForm();
