@@ -100,3 +100,7 @@ https://github.com/angular/material2/issues/998 */
 .full-height {
   height: 100% !important;
 }
+
+.action-buttons {
+  margin-top: 10px;
+}
