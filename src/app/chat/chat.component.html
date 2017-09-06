@@ -1,7 +1,7 @@
-<div fxLayout="row" style="height:100%; padding-bottom:30px;">
+<div fxLayout="row" style="height:100%;">
   <md-card fxFlex style="padding:0">
     <md-sidenav-container style="height:100%;background-color:white;">
-      <md-sidenav mode="side" opened="true" style="width: 200px;box-shadow: 0 0 5px rgba(0,0,0,.2);">
+      <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="{{isMobile ? 'false' : 'true'}}" style="width: 200px;box-shadow: 0 0 5px rgba(0,0,0,.2);">
         <md-toolbar style="background-color:white;">
           <span>Channels</span>
         </md-toolbar>
@@ -18,34 +18,43 @@
         </md-nav-list>
       </md-sidenav>
 
-      <div style="padding:20px;">
+      <div style="height:100%; overflow:hidden;" fxLayout="column">
 
-        <div fxLayout="row" style="margin-bottom:20px;" *ngFor="let message of currentChannel?.messages;">
-          <div style="padding-left:10px;padding-right:10px;">
-            <div class="chat-bubble">
-              <span style="font-size:14px;">{{message.message}}</span>
+        <md-toolbar style="background-color:white;">
+          <button md-icon-button (click)="toggleSidenav()">
+              <span><md-icon>short_text</md-icon></span>
+          </button>
+        </md-toolbar>
+
+        <div style="overflow-y:scroll;padding-left:20px;padding-right:20px;" #chatContainer>
+          <div fxLayout="row" style="margin-bottom:20px;" *ngFor="let message of currentChannel?.messages;">
+              <div style="padding-left:10px;padding-right:10px;">
+                <div class="chat-bubble">
+                  <span style="font-size:14px;">{{message.message}}</span>
+                </div>
+                <div style="margin-top:5px;">
+                  <span style="font-size:13px;font-style:italic;">{{message.username}} - {{message.createDate | date:'short'}}</span>
+                </div>
+              </div>
+              <span fxFlex></span>
             </div>
-            <div style="margin-top:5px;">
-              <span style="font-size:13px;font-style:italic;">{{message.username}} - {{message.createDate | date:'short'}}</span>
-            </div>
-          </div>
-          <span fxFlex></span>
         </div>
 
-        <div *ngIf="currentChannel == null">
+        <div *ngIf="currentChannel == null" style="padding-left:16px;">
           <h1>Choose a channel on the left to chat.</h1>
         </div>
 
-        <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12); margin-top: 2rem; padding: 1.5rem 2rem;">
-          <div fxFlex fxLayout="row">
+        <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12); margin-top: 2rem; margin-bottom:2rem; padding: 1.5rem 2rem;">
+          <form [formGroup]="chatForm" fxFlex fxLayout="row" (ngSubmit)="createMessage()" novalidate>
             <md-input-container fxFlex>
-              <input type="text" mdInput placeholder="Send Message" [(ngModel)]="newMessage" />
+              <input type="text" mdInput placeholder="Send Message" formControlName="message" />
             </md-input-container>
-            <button md-fab color="primary" style="margin-left:30px" (click)="createMessage(newMessage)">
+            <button md-fab color="primary" style="margin-left:30px" type="submit">
               <md-icon>send</md-icon>
             </button>
-          </div>
+          </form>
         </div>
+
       </div>
     </md-sidenav-container>
   </md-card>
