@@ -28,7 +28,7 @@
         </md-nav-list>
       </md-sidenav>
 
-      <div style="height:80%; max-height:80%; overflow:hidden;" fxLayout="column">
+      <div style="height:100%; overflow:hidden;" fxLayout="column">
 
         <md-toolbar style="background-color:white;">
           <button md-icon-button (click)="toggleSidenav()">
@@ -39,7 +39,7 @@
           </div>
         </md-toolbar>
 
-        <div style="overflow-y:auto;padding-left:20px;padding-right:20px;" #chatContainer>
+        <div style="overflow-y:auto;padding-left:15px;padding-right:15px;" #chatContainer>
           <md-spinner *ngIf="working"></md-spinner>
           <div fxLayout="row" style="margin-bottom:20px;" *ngFor="let message of currentChannel?.messages;">
             <span fxFlex *ngIf="message.username === currentUser.username"></span>
@@ -63,18 +63,19 @@
         <div *ngIf="currentChannel == null" style="padding-left:16px;">
           <h1>Choose a support channel or click "New Support Chat" in the channel sidebar.</h1>
         </div>
+
+        <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12);padding: 15px;margin-top:auto; padding-bottom:40px;">
+          <form [formGroup]="chatForm" fxFlex fxLayout="row" (ngSubmit)="createMessage()" novalidate>
+            <md-input-container fxFlex>
+              <input type="text" mdInput placeholder="Send Message" formControlName="message" />
+            </md-input-container>
+            <button md-fab color="primary" style="margin-left:30px" type="submit">
+              <md-icon>send</md-icon>
+            </button>
+          </form>
+        </div>
       </div>
 
-      <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12); margin-bottom:10px; padding: 15px;position: absolute;bottom: 0;left: 0;width:100%;">
-        <form [formGroup]="chatForm" fxFlex fxLayout="row" (ngSubmit)="createMessage()" novalidate>
-          <md-input-container fxFlex>
-            <input type="text" mdInput placeholder="Send Message" formControlName="message" />
-          </md-input-container>
-          <button md-fab color="primary" style="margin-left:30px" type="submit">
-            <md-icon>send</md-icon>
-          </button>
-        </form>
-      </div>
     </md-sidenav-container>
   </md-card>
 </div>
