@@ -1,16 +1,15 @@
 .chat-bubble {
   padding:10px;
-  background-color: #4d5863;
   color: white;
   border-radius:8px;
+}
 
-  .mine {
+.mine {
+  background-color: #1565c0;
+}
 
-  }
-
-  .other {
-
-  }
+.other {
+  background-color: #4d5863;
 }
 
 .active-channel {

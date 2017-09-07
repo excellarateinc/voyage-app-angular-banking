@@ -1,5 +1,5 @@
 <div fxLayout="row" style="height:100%;">
-  <md-card fxFlex style="padding:0;">
+  <md-card fxFlex style="padding:0;margin-bottom:0;">
     <md-sidenav-container style="height:100%;background-color:white;">
       <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="{{isMobile ? 'false' : 'true'}}" style="width: 200px;box-shadow: 0 0 5px rgba(0,0,0,.2);">
         <md-toolbar style="background-color:white;">
@@ -28,7 +28,7 @@
         </md-nav-list>
       </md-sidenav>
 
-      <div style="height:80%; overflow:hidden;" fxLayout="column">
+      <div style="height:80%; max-height:80%; overflow:hidden;" fxLayout="column">
 
         <md-toolbar style="background-color:white;">
           <button md-icon-button (click)="toggleSidenav()">
@@ -40,16 +40,23 @@
         </md-toolbar>
 
         <div style="overflow-y:auto;padding-left:20px;padding-right:20px;" #chatContainer>
+          <md-spinner *ngIf="working"></md-spinner>
           <div fxLayout="row" style="margin-bottom:20px;" *ngFor="let message of currentChannel?.messages;">
+            <span fxFlex *ngIf="message.username === currentUser.username"></span>
             <div style="padding-left:10px;padding-right:10px;">
-              <div class="chat-bubble">
-                <span style="font-size:14px;">{{message.message}}</span>
+              <div class="chat-bubble" [ngClass]="{'mine': message.username === currentUser.username, 'other': message.username !== currentUser.username}">
+                <span style="font-size:14px;">
+                  {{message.message}}
+                </span>
               </div>
               <div style="margin-top:5px;">
-                <span style="font-size:13px;font-style:italic;">{{message.username}} - {{message.createDate | date:'short'}}</span>
+                <span style="font-size:13px;font-style:italic;">
+                  <span *ngIf="message.username !== currentUser.username">{{message.username}} - </span>
+                  <span>{{message.createDate | date:'short'}}</span>
+                </span>
               </div>
             </div>
-            <span fxFlex></span>
+            <span fxFlex *ngIf="message.username !== currentUser.username"></span>
           </div>
         </div>
 

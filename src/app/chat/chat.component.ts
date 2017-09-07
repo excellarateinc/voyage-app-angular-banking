@@ -7,6 +7,8 @@ import { SignalR } from 'ng2-signalr';
 import { ChatService } from './chat.service';
 import { ChatChannel } from './chat-channel.model';
 import { ChatMessage } from './chat-message.model';
+import { UserService } from '../core/user/user.service';
+import { User } from '../core/user/user.model';
 
 @Component({
   selector: 'app-chat',
@@ -22,16 +24,22 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
   @ViewChild('chatContainer') private myScrollContainer: ElementRef;
   private readonly chatMessage = 'newChatMessage';
   private watcher: Subscription;
+  currentUser: User;
+  working = false;
 
   constructor(
     private chatService: ChatService,
     private signalR: SignalR,
     private fb: FormBuilder,
-    private media: ObservableMedia) { }
+    private media: ObservableMedia,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.chatService.getChannels()
       .subscribe(result => this.channels = result);
+
+    this.userService.getCurrentUser()
+      .subscribe(result => this.currentUser = result);
 
     this.initializeForm();
     this.listenForPushNotifications();
@@ -61,8 +69,12 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   selectChannel(channel: ChatChannel): void {
     this.currentChannel = channel;
+    this.working = true;
     this.chatService.getMessages(channel.channelId)
-      .subscribe(result => this.currentChannel.messages = result);
+      .subscribe(result => {
+        this.currentChannel.messages = result;
+        this.working = false;
+      });
     this.closeSidenav();
   }
 

@@ -3,6 +3,7 @@ export class ChatMessage {
   channelId: number;
   message: string;
   username: string;
+  mine: boolean;
   createdBy: string;
   createDate: Date;
 }
