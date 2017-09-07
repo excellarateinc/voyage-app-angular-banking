@@ -50,6 +50,5 @@ export class NotificationsIconComponent implements OnInit {
 
   private onPushReceived(notification: Notification): void {
     this.notifications.unshift(notification);
-    this.snackBar.open(notification.description, null, { duration: 3000 });
   }
 }

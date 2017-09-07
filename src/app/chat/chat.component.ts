@@ -53,8 +53,10 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.chatService.createChannel()
       .subscribe(result => {
         this.currentChannel = result;
-        this.channels.push(result);
+        this.currentChannel.messages = [];
+        this.channels.unshift(this.currentChannel);
       });
+    this.closeSidenav();
   }
 
   selectChannel(channel: ChatChannel): void {
@@ -118,6 +120,9 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
       if (channel.channelId === this.currentChannel.channelId) {
         this.scrollToBottom();
       }
+    } else {
+      this.chatService.getChannels()
+        .subscribe(result => this.channels = result);
     }
   }
 

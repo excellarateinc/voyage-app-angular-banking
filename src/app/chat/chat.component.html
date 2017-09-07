@@ -1,9 +1,9 @@
 <div fxLayout="row" style="height:100%;">
-  <md-card fxFlex style="padding:0">
+  <md-card fxFlex style="padding:0;">
     <md-sidenav-container style="height:100%;background-color:white;">
       <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="{{isMobile ? 'false' : 'true'}}" style="width: 200px;box-shadow: 0 0 5px rgba(0,0,0,.2);">
         <md-toolbar style="background-color:white;">
-          <span>Channels</span>
+          <span>Support Channels</span>
         </md-toolbar>
         <md-nav-list>
           <md-list-item *ngFor="let channel of channels" (click)="selectChannel(channel)" [ngClass]="{'active-channel': channel.channelId === currentChannel?.channelId}">
@@ -15,46 +15,58 @@
               <p mdLine>{{channel.createDate | date:'short'}}</p>
             </div>
           </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item (click)="createChannel()">
+            <div>
+              <md-icon>add</md-icon>
+            </div>
+            <div style="padding-top:10px;padding-left:10px;">
+              <span mdLine>New Support Chat</span>
+              <p mdLine></p>
+            </div>
+          </md-list-item>
         </md-nav-list>
       </md-sidenav>
 
-      <div style="height:100%; overflow:hidden;" fxLayout="column">
+      <div style="height:80%; overflow:hidden;" fxLayout="column">
 
         <md-toolbar style="background-color:white;">
           <button md-icon-button (click)="toggleSidenav()">
-              <span><md-icon>short_text</md-icon></span>
+            <span><md-icon>short_text</md-icon></span>
           </button>
+          <div>
+            <span>{{currentChannel?.name}}</span>
+          </div>
         </md-toolbar>
 
-        <div style="overflow-y:scroll;padding-left:20px;padding-right:20px;" #chatContainer>
+        <div style="overflow-y:auto;padding-left:20px;padding-right:20px;" #chatContainer>
           <div fxLayout="row" style="margin-bottom:20px;" *ngFor="let message of currentChannel?.messages;">
-              <div style="padding-left:10px;padding-right:10px;">
-                <div class="chat-bubble">
-                  <span style="font-size:14px;">{{message.message}}</span>
-                </div>
-                <div style="margin-top:5px;">
-                  <span style="font-size:13px;font-style:italic;">{{message.username}} - {{message.createDate | date:'short'}}</span>
-                </div>
+            <div style="padding-left:10px;padding-right:10px;">
+              <div class="chat-bubble">
+                <span style="font-size:14px;">{{message.message}}</span>
               </div>
-              <span fxFlex></span>
+              <div style="margin-top:5px;">
+                <span style="font-size:13px;font-style:italic;">{{message.username}} - {{message.createDate | date:'short'}}</span>
+              </div>
             </div>
+            <span fxFlex></span>
+          </div>
         </div>
 
         <div *ngIf="currentChannel == null" style="padding-left:16px;">
-          <h1>Choose a channel on the left to chat.</h1>
+          <h1>Choose a support channel or click "New Support Chat" in the channel sidebar.</h1>
         </div>
+      </div>
 
-        <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12); margin-top: 2rem; margin-bottom:2rem; padding: 1.5rem 2rem;">
-          <form [formGroup]="chatForm" fxFlex fxLayout="row" (ngSubmit)="createMessage()" novalidate>
-            <md-input-container fxFlex>
-              <input type="text" mdInput placeholder="Send Message" formControlName="message" />
-            </md-input-container>
-            <button md-fab color="primary" style="margin-left:30px" type="submit">
-              <md-icon>send</md-icon>
-            </button>
-          </form>
-        </div>
-
+      <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12); margin-bottom:10px; padding: 15px;position: absolute;bottom: 0;left: 0;width:100%;">
+        <form [formGroup]="chatForm" fxFlex fxLayout="row" (ngSubmit)="createMessage()" novalidate>
+          <md-input-container fxFlex>
+            <input type="text" mdInput placeholder="Send Message" formControlName="message" />
+          </md-input-container>
+          <button md-fab color="primary" style="margin-left:30px" type="submit">
+            <md-icon>send</md-icon>
+          </button>
+        </form>
       </div>
     </md-sidenav-container>
   </md-card>
