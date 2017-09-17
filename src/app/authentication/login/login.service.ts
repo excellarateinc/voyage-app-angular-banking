@@ -11,6 +11,7 @@ export class LoginService {
   constructor(private http: Http, private authService: AuthenticationService) { }
 
   login(login: Login): Observable<any> {
+    // tslint:disable-next-line:max-line-length
     const body = `username=${login.username}&password=${login.password}&client_id=${environment.OAUTH_CLIENT_ID}&client_secret=${environment.OAUTH_CLIENT_SECRET}&grant_type=password`;
 
     const options: RequestOptionsArgs = { headers: new Headers() };
