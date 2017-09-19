@@ -1,100 +1,110 @@
 <!-- Tablet / Desktop -->
-<div fxLayout="row" fxShow fxHide.xs fxHide.sm>
-  <span fxFlex></span>
-  <md-card fxFlex fxFlex.sm="66" fxFlex.xs="100" fxFlex.md="50">
-    <div fxLayout="column">
-      <div fxLayout="row" style="margin-top:25px;">
-        <span fxFlex></span>
-        <i class="material-icons" style="font-size:150px; color: #2b3d53;">account_balance</i>
-        <span fxFlex></span>
-      </div>
-      <div fxLayout="row" style="margin-top:20px;">
-        <span fxFlex></span>
-        <div style="font-size: 60px; color: #2b3d53">
-          Acme Bank
+<div class="masthead" fxShow fxHide.xs fxHide.sm>
+  <div fxLayout="row">
+    <span fxFlex></span>
+    <md-card fxFlex.md="50" style="margin-top:150px;">
+      <div fxLayout="column">
+        <div fxLayout="row" style="margin-top:25px;">
+          <span fxFlex></span>
+          <i class="material-icons" style="font-size:150px; color: #2b3d53;">account_balance</i>
+          <span fxFlex></span>
         </div>
-        <span fxFlex></span>
-      </div>
-      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top:50px">
-        <div fxLayout="column">
-          <md-input-container>
-            <input mdInput placeholder="Username" formControlName="username" required>
-            <md-error *ngIf="loginForm.controls['username'].hasError('required')">
-              Username is required
-            </md-error>
-          </md-input-container>
-          <md-input-container style="margin-top:20px">
-            <input mdInput placeholder="Password" formControlName="password" type="password" required>
-            <md-error *ngIf="loginForm.controls['password'].hasError('required')">
-              Password is required
-            </md-error>
-          </md-input-container>
-          <div *ngIf="loginFailed">
-            <span style="color:lightcoral">
-              Invalid username or password.
-            </span>
+        <div fxLayout="row" style="margin-top:20px;">
+          <span fxFlex></span>
+          <div style="font-size: 60px; color: #2b3d53">
+            Acme Bank
           </div>
+          <span fxFlex></span>
         </div>
-        <div fxLayout="column" style="margin-top:60px;">
-          <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
-          <span>&nbsp;</span>
-          <div fxLayout="row">
-            <span style="margin: 0 auto;">Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top:50px">
+          <div fxLayout="column">
+            <md-input-container>
+              <input mdInput placeholder="Username" formControlName="username" required>
+              <md-error *ngIf="loginForm.controls['username'].hasError('required')">
+                Username is required
+              </md-error>
+            </md-input-container>
+            <md-input-container style="margin-top:20px">
+              <input mdInput placeholder="Password" formControlName="password" type="password" required>
+              <md-error *ngIf="loginForm.controls['password'].hasError('required')">
+                Password is required
+              </md-error>
+            </md-input-container>
+            <div *ngIf="loginFailed">
+              <span style="color:lightcoral">
+                Invalid username or password.
+              </span>
+            </div>
           </div>
-        </div>
-      </form>
-    </div>
-  </md-card>
-  <span fxFlex></span>
+          <div fxLayout="column" style="margin-top:60px;">
+            <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+            <span>&nbsp;</span>
+            <div fxLayout="row">
+              <span style="margin: 0 auto;">Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </md-card>
+    <span fxFlex></span>
+  </div>
 </div>
 
 <!-- Mobile -->
-<div fxLayout="column" fxHide fxShow.xs fxShow.sm fxFlexFill style="margin-left:10px; margin-right:10px;background-color:white;">
-  <span style="margin-top: auto;">&nbsp;</span>
-  <div fxLayout="row" style="min-height:55px;">
-    <span fxFlex></span>
-    <i class="material-icons" style="font-size:60px; color: #2b3d53;">account_balance</i>
-    <span fxFlex></span>
-  </div>
-  <div fxLayout="row" style="margin-top:10px;min-height:40px;">
-    <span fxFlex></span>
-    <div style="font-size: 40px; color:#2b3d53;">
-      Acme Bank
+<div class="masthead-mobile" fxHide fxShow.xs fxShow.sm>
+  <div fxLayout="column" fxFlexFill style="margin-left:10px; margin-right:10px;">
+    <span style="margin-top: auto;">&nbsp;</span>
+    <div fxLayout="row" style="min-height:55px;">
+      <span fxFlex></span>
+      <i class="material-icons" style="font-size:60px; color: white;">account_balance</i>
+      <span fxFlex></span>
     </div>
-    <span fxFlex></span>
-  </div>
-  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top: auto; margin-left:15px; margin-right: 15px;">
-    <div fxLayout="column">
-      <md-input-container>
-        <input mdInput placeholder="Username" formControlName="username" required>
-        <md-error *ngIf="loginForm.controls['username'].hasError('required')">
-          Username is required
-        </md-error>
-      </md-input-container>
-      <md-input-container style="margin-top:15px">
-        <input mdInput placeholder="Password" formControlName="password" type="password" required>
-        <md-error *ngIf="loginForm.controls['password'].hasError('required')">
-          Password is required
-        </md-error>
-      </md-input-container>
-      <div *ngIf="loginFailed">
-        <span style="color:lightcoral">
-          Invalid username or password.
-        </span>
+    <div fxLayout="row" style="margin-top:10px;min-height:40px;">
+      <span fxFlex></span>
+      <div style="font-size: 40px; color: white;">
+        Acme Bank
       </div>
-      <span>&nbsp;</span>
-      <span>&nbsp;</span>
+      <span fxFlex></span>
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate style="margin-top: auto; margin-left:15px; margin-right: 15px;">
       <div fxLayout="column">
-        <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
-        <span>&nbsp;</span>
-        <div fxLayout="row">
-          <span style="font-size:16px;margin: 0 auto;">
-            Don't have an account? <a routerLink="/authentication/register">Sign Up</a>
+        <md-input-container class="light-input">
+          <span mdPrefix style="margin-right:10px">
+            <md-icon style="color:white; font-size:26px;">person_outline</md-icon>
+          </span>
+          <input mdInput placeholder="Username" formControlName="username" required>
+          <md-error *ngIf="loginForm.controls['username'].hasError('required')">
+            Username is required
+          </md-error>
+        </md-input-container>
+        <md-input-container class="light-input" style="margin-top:15px">
+          <span mdPrefix style="margin-right:10px">
+            <md-icon style="color:white; font-size:26px;">lock_outline</md-icon>
+          </span>
+          <input mdInput placeholder="Password" formControlName="password" type="password" required>
+          <md-error *ngIf="loginForm.controls['password'].hasError('required')">
+            Password is required
+          </md-error>
+        </md-input-container>
+        <div *ngIf="loginFailed">
+          <span style="color:white">
+            Invalid username or password.
           </span>
         </div>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <div fxLayout="column">
+          <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+          <span>&nbsp;</span>
+          <div fxLayout="row">
+            <span style="font-size:16px;margin: 0 auto; color:white;">
+              Don't have an account? <a style="color:white;" routerLink="/authentication/register">Sign Up</a>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
-  </form>
-  <span>&nbsp;</span>
-  <span>&nbsp;</span>
+    </form>
+    <span>&nbsp;</span>
+    <span>&nbsp;</span>
+  </div>
 </div>

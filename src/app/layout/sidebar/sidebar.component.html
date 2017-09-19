@@ -1,4 +1,4 @@
-<md-sidenav-container class="sidenav-height">
+<md-sidenav-container [ngClass]="{'sidenav-height': isAuthenticated, 'sidenav-height-full': !isAuthenticated}">
   <md-sidenav #sidenav mode="{{mobile ? 'over' : 'side'}}" opened="{{mobile ? 'false' : 'true'}}" *ngIf="isAuthenticated">
     <nav (click)="close()">
       <ul>
