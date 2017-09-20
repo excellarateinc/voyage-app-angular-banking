@@ -129,7 +129,7 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         channel.messages = [];
       }
       channel.messages.push(message);
-      if (channel.channelId === this.currentChannel.channelId) {
+      if (this.currentChannel && this.currentChannel.channelId === channel.channelId) {
         this.scrollToBottom();
       }
     } else {
