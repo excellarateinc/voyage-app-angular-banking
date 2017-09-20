@@ -21,7 +21,7 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "themes/voyage-theme.scss"
+        "themes/acme-bank-theme.scss"
       ],
       "scripts": [
         "../node_modules/hammerjs/hammer.min.js",

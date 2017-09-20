@@ -6,23 +6,6 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue.
-$voyage-app-primary: mat-palette($mat-indigo);
-$voyage-app-accent: mat-palette($mat-grey, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$voyage-app-warn: mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$voyage-app-theme: mat-light-theme($voyage-app-primary, $voyage-app-accent, $voyage-app-warn);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include angular-material-theme($voyage-app-theme);
-
 //
 // Define custom palettes for dark theme.
 //
@@ -98,3 +81,77 @@ $voyage-theme-dark: mat-light-theme($voyage-app-primary, $voyage-app-accent, $vo
 .voyage-theme-dark {
   @include angular-material-theme($voyage-theme-dark);
 }
+
+//
+// Define custom palettes for Acme Bank.
+//
+$acme-mat-blue: (
+  50: #e6e8ea,
+  100: #c0c5cc,
+  200: #969faa,
+  300: #6b7887,
+  400: #4c5b6e,
+  500: #2c3e54,
+  600: #27384d,
+  700: #213043,
+  800: #1b283a,
+  900: #101b29,
+  A100: #5472d3,
+  A200: #0d47a1,
+  A400: #002171,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$acme-mat-gray: (
+  50: #ff8d54,
+  100: #ff8d54,
+  200: #ff8d54,
+  300: #ff8d54,
+  400: #ff8d54,
+  500: #ff8d54,
+  600: #ff8d54,
+  700: #ff8d54,
+  800: #ff8d54,
+  900: #ff8d54,
+  A100: #efefef,
+  A200: #6c6d6e,
+  A400: #8d8d8d,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$acme-bank-primary: mat-palette($acme-mat-blue, A200, A100, A400);
+$acme-bank-accent:  mat-palette($acme-mat-gray, A200, A100, A400);
+$acme-bank-warn:    mat-palette($mat-red);
+$acme-bank-theme: mat-light-theme($acme-bank-primary, $acme-bank-accent, $acme-bank-warn);
+
+@include angular-material-theme($acme-bank-theme);

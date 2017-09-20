@@ -1,5 +1,5 @@
 <md-toolbar color="primary" *ngIf="isAuthenticated">
-  <button class="mat-button menu-button" (click)="toggleSidebar()" *ngIf="isMobile && isAuthenticated">
+  <button class="mat-button menu-button" (click)="toggleSidebar()" *ngIf="isMobile">
     <md-icon class="clickable menu-icon">menu</md-icon>
   </button>
   <span routerLink="/" class="clickable">
@@ -8,6 +8,6 @@
     </span>
   </span>
   <span class="fill-space"></span>
-  <app-notifications-icon *ngIf="isAuthenticated"></app-notifications-icon>
-  <app-profile-icon *ngIf="isAuthenticated"></app-profile-icon>
+  <app-notifications-icon></app-notifications-icon>
+  <app-profile-icon></app-profile-icon>
 </md-toolbar>
