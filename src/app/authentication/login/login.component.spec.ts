@@ -42,7 +42,7 @@ describe('LoginComponent', () => {
   describe('when calling goToOauthLogin()', () => {
     it('should call the authentication service', () => {
       spyOn(authenticationService, 'goToOauthLogin');
-      component.goToOauthLogin();
+      component.login();
       expect(authenticationService.goToOauthLogin).toHaveBeenCalled();
     });
   });
