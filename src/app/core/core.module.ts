@@ -7,6 +7,9 @@ import { BroadcastService } from './broadcast.service';
   imports: [
     CommonModule
   ],
-  providers: [ UserService, BroadcastService ]
+  providers: [
+    UserService,
+    BroadcastService
+  ]
 })
 export class CoreModule { }
