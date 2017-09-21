@@ -18,6 +18,8 @@ export class WebNotificationsService {
     if (this.permission === 'denied') {
       return;
     }
-    const notification = new Notification(title, { body, icon: '/favicon.ico', tag: 'notification' });
+    navigator.serviceWorker.register('/assets/sw.js').then(registration => {
+      registration.showNotification(title, { body, icon: '/favicon.ico', tag: 'notification' });
+    });
   }
 }
