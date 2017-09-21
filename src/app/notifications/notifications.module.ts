@@ -6,6 +6,7 @@ import { NotificationsIconComponent } from './notifications-icon/notifications-i
 import { environment } from '../../environments/environment';
 import { SignalRModule } from 'ng2-signalr';
 import { SignalRConfiguration } from 'ng2-signalr';
+import { WebNotificationsService } from './web-notifications.service';
 
 export function getConfiguration(): SignalRConfiguration {
   const config = new SignalRConfiguration();
@@ -23,7 +24,8 @@ export function getConfiguration(): SignalRConfiguration {
   ],
   declarations: [NotificationsIconComponent],
   providers: [
-    NotificationsService
+    NotificationsService,
+    WebNotificationsService
   ],
   exports: [
     NotificationsIconComponent

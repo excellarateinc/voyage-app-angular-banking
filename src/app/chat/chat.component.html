@@ -1,8 +1,8 @@
 <div fxLayout="row" style="height:100%;">
-  <md-card fxFlex style="padding:0;margin-bottom:0;">
-    <md-sidenav-container style="height:100%;background-color:white;">
-      <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="{{isMobile ? 'false' : 'true'}}" style="width: 200px;box-shadow: 0 0 5px rgba(0,0,0,.2);">
-        <md-toolbar style="background-color:white;">
+  <md-card fxFlex style="padding:0; margin-bottom:0;">
+    <md-sidenav-container class="chat-container">
+      <md-sidenav #sidenav mode="{{isMobile ? 'over' : 'side'}}" opened="{{isMobile ? 'false' : 'true'}}" class="channel-list">
+        <md-toolbar class="channel-toolbar">
           <span>Support Channels</span>
         </md-toolbar>
         <md-nav-list>
@@ -10,7 +10,7 @@
             <div>
               <md-icon>chat</md-icon>
             </div>
-            <div style="padding-top:10px;padding-left:10px;">
+            <div class="channel-item-description">
               <span mdLine>{{channel.name}}</span>
               <p mdLine>{{channel.createDate | date:'short'}}</p>
             </div>
@@ -20,17 +20,15 @@
             <div>
               <md-icon>add</md-icon>
             </div>
-            <div style="padding-top:10px;padding-left:10px;">
+            <div class="channel-item-description">
               <span mdLine>New Support Chat</span>
               <p mdLine></p>
             </div>
           </md-list-item>
         </md-nav-list>
       </md-sidenav>
-
-      <div style="height:100%; overflow:hidden;" fxLayout="column">
-
-        <md-toolbar style="background-color:white;">
+      <div fxLayout="column" class="message-container">
+        <md-toolbar class="channel-toolbar">
           <button md-icon-button (click)="toggleSidenav()">
             <span><md-icon>short_text</md-icon></span>
           </button>
@@ -38,19 +36,18 @@
             <span>{{currentChannel?.name}}</span>
           </div>
         </md-toolbar>
-
-        <div style="overflow-y:auto;padding-left:15px;padding-right:15px;" #chatContainer>
+        <div class="message-container-inner" #chatContainer>
           <md-spinner *ngIf="working"></md-spinner>
           <div fxLayout="row" style="margin-bottom:20px;" *ngFor="let message of currentChannel?.messages;">
             <span fxFlex *ngIf="message.username === currentUser.username"></span>
-            <div style="padding-left:10px;padding-right:10px;">
-              <div class="chat-bubble" [ngClass]="{'mine': message.username === currentUser.username, 'other': message.username !== currentUser.username}">
-                <span style="font-size:14px;">
+            <div class="message">
+              <div class="message-bubble" [ngClass]="{'mine': message.username === currentUser.username, 'other': message.username !== currentUser.username}">
+                <span>
                   {{message.message}}
                 </span>
               </div>
               <div style="margin-top:5px;">
-                <span style="font-size:13px;font-style:italic;">
+                <span class="message-signature">
                   <span *ngIf="message.username !== currentUser.username">{{message.username}} - </span>
                   <span>{{message.createDate | date:'short'}}</span>
                 </span>
@@ -59,12 +56,10 @@
             <span fxFlex *ngIf="message.username !== currentUser.username"></span>
           </div>
         </div>
-
-        <div *ngIf="currentChannel == null" style="padding-left:16px;">
+        <div *ngIf="currentChannel == null" class="help-message">
           <h1>Choose a support channel or click "New Support Chat" in the channel sidebar.</h1>
         </div>
-
-        <div *ngIf="currentChannel != null" fxLayout="row" style="border-top: 1px solid rgba(0,0,0,.12);padding: 15px;margin-top:auto; padding-bottom:40px;">
+        <div *ngIf="currentChannel != null" fxLayout="row" class="message-actions">
           <form [formGroup]="chatForm" fxFlex fxLayout="row" (ngSubmit)="createMessage()" novalidate>
             <md-input-container fxFlex>
               <input type="text" mdInput placeholder="Send Message" formControlName="message" />
@@ -75,7 +70,6 @@
           </form>
         </div>
       </div>
-
     </md-sidenav-container>
   </md-card>
 </div>
