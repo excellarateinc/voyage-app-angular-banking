@@ -19,6 +19,8 @@ describe('VerificationComponent', () => {
       verify: () => { }
     };
 
+    const windowStub: any = { location: { } };
+
     TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
@@ -28,7 +30,8 @@ describe('VerificationComponent', () => {
       ],
       declarations: [ VerificationComponent ],
       providers: [
-        { provide: VerificationService, useValue: verificationServiceStub }
+        { provide: VerificationService, useValue: verificationServiceStub },
+        { provide: 'Window', useValue: windowStub }
       ]
     })
     .compileComponents();

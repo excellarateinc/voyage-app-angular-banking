@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
@@ -14,7 +14,10 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginFailed = false;
 
-  constructor(private loginService: LoginService, private formBuilder: FormBuilder) { }
+  constructor(
+    private loginService: LoginService,
+    private formBuilder: FormBuilder,
+    @Inject('Window') private window: any) { }
 
   ngOnInit() {
     this.initializeForm();
@@ -27,7 +30,7 @@ export class LoginComponent implements OnInit {
     const login = this.loginForm.value as Login;
     this.loginService.login(login)
       .subscribe(result => {
-        window.location.href = '/';
+        this.window.location.href = '/';
       }, error => this.loginFailed = true);
   }
 
