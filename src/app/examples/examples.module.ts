@@ -5,13 +5,14 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExamplesRoutingModule } from './examples-routing.module';
-import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
 import { TransferComponent } from './banking/transfer/transfer.component';
 import { AccountsService } from './banking/accounts.service';
 import { CreateAccountComponent } from './banking/create-account/create-account.component';
+import { ProfileImageComponent } from './profile/profile-image/profile-image.component';
 
 @NgModule({
   imports: [
@@ -21,14 +22,15 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
     FlexLayoutModule,
     ChartsModule,
     ExamplesRoutingModule,
-    FileUploadModule,
+    ImageCropperModule,
     SharedModule
   ],
   declarations: [
     AccountsDashboardComponent,
     ProfileComponent,
     TransferComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    ProfileImageComponent
   ],
   exports: [ AccountsDashboardComponent ],
   providers: [ AccountsService ]
