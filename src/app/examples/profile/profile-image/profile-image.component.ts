@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper';
 
 @Component({
@@ -7,40 +7,29 @@ import { ImageCropperComponent, CropperSettings, Bounds } from 'ng2-img-cropper'
   styleUrls: ['./profile-image.component.scss']
 })
 export class ProfileImageComponent implements OnInit {
-  name: string;
-  data: any;
-  cropperSettings: CropperSettings;
-  croppedWidth: number;
-  croppedHeight: number;
-  @ViewChild('cropper') cropper: ImageCropperComponent;
+  @Input() currentImage: any;
   @Output() imageChanged = new EventEmitter<any>();
+  @ViewChild('uploaderInput') uploaderInput: any;
+  @ViewChild('cropper') cropper: ImageCropperComponent;
+  cropperSettings: CropperSettings;
+  data: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.cropperSettings = new CropperSettings();
-    this.cropperSettings.width = 200;
-    this.cropperSettings.height = 200;
-    this.cropperSettings.croppedWidth = 200;
-    this.cropperSettings.croppedHeight = 200;
-    this.cropperSettings.canvasWidth = 150;
-    this.cropperSettings.canvasHeight = 150;
-    this.cropperSettings.minWidth = 10;
-    this.cropperSettings.minHeight = 10;
-    this.cropperSettings.rounded = false;
-    this.cropperSettings.keepAspect = false;
-    this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
-    this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
-    this.data = {};
+    this.initializeCropper();
+    this.data = { image: this.currentImage };
   }
 
-  cropped(bounds: Bounds): void {
-    this.croppedHeight = bounds.bottom - bounds.top;
-    this.croppedWidth = bounds.right - bounds.left;
+  initFileUpload(): void {
+    this.uploaderInput.nativeElement.click();
+  }
+
+  onCropped(bounds: Bounds): void {
     this.imageChanged.emit(this.data.image);
   }
 
-  fileChangeListener($event): void {
+  onFileChanged($event: any): void {
     const image: any = new Image();
     const file: File = $event.target.files[0];
     const myReader: FileReader = new FileReader();
@@ -49,8 +38,26 @@ export class ProfileImageComponent implements OnInit {
       this.cropper.setImage(image);
       this.imageChanged.emit(myReader.result);
     };
+    if (file != null) {
+      myReader.readAsDataURL(file);
+    }
+  }
 
-    myReader.readAsDataURL(file);
+  private initializeCropper(): void {
+    const cropperSettings = new CropperSettings();
+    cropperSettings.width = 150;
+    cropperSettings.height = 150;
+    cropperSettings.croppedWidth = 150;
+    cropperSettings.croppedHeight = 150;
+    cropperSettings.canvasWidth = 250;
+    cropperSettings.canvasHeight = 150;
+    cropperSettings.minWidth = 10;
+    cropperSettings.minHeight = 10;
+    cropperSettings.rounded = false;
+    cropperSettings.keepAspect = true;
+    cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
+    cropperSettings.cropperDrawSettings.strokeWidth = 2;
+    cropperSettings.noFileInput = true;
+    this.cropperSettings = cropperSettings;
   }
 }
-

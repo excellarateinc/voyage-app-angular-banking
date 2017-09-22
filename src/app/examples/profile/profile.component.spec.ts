@@ -5,7 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { Observable } from 'rxjs/Observable';
 import { ProfileComponent } from './profile.component';
 import { SharedModule } from '../../shared/shared.module';
-import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
@@ -31,7 +30,6 @@ describe('ProfileComponent', () => {
         MaterialModule,
         FlexLayoutModule,
         SharedModule,
-        FileUploadModule,
         ReactiveFormsModule
       ],
       declarations: [ ProfileComponent ],

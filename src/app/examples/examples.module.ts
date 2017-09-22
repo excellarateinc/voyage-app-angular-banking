@@ -5,7 +5,6 @@ import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExamplesRoutingModule } from './examples-routing.module';
-import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
 import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
@@ -23,7 +22,6 @@ import { ProfileImageComponent } from './profile/profile-image/profile-image.com
     FlexLayoutModule,
     ChartsModule,
     ExamplesRoutingModule,
-    FileUploadModule,
     ImageCropperModule,
     SharedModule
   ],
