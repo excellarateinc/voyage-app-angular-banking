@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
@@ -8,7 +8,10 @@ import { environment } from '../../environments/environment';
 export class AuthenticationService {
   private sessionStorageTokenKey = 'voyage.token';
 
-  constructor(private location: Location, private router: Router) { }
+  constructor(
+    private location: Location,
+    private router: Router,
+    @Inject('Window') private window: any) { }
 
   getToken(): string {
     // Attempt to retrieve the token from session storage.
@@ -34,12 +37,12 @@ export class AuthenticationService {
 &redirect_uri=${encodeURIComponent(environment.OAUTH_REDIRECT_URL)}
 &response_type=${RESPONSE_TYPE}
 &scope=email`;
-    window.location.href = oauthUrl;
+    this.window.location.href = oauthUrl;
   }
 
   logout(): void {
     sessionStorage.removeItem(this.sessionStorageTokenKey);
-    window.location.href = '/';
+    this.window.location.href = '/';
   }
 
   goToVerification(): void {
@@ -47,13 +50,13 @@ export class AuthenticationService {
   }
 
   private getTokenFromUrl(): string {
-    const tokenIndex = window.location.href.indexOf('access_token');
+    const tokenIndex = this.window.location.href.indexOf('access_token');
     if (tokenIndex === -1) {
       return null;
     }
 
     const paramLength = 'access_token='.length;
-    const token = window.location.href.substring(tokenIndex + paramLength, window.location.href.indexOf('&'));
+    const token = this.window.location.href.substring(tokenIndex + paramLength, window.location.href.indexOf('&'));
     this.location.replaceState('');
     return token;
   }
