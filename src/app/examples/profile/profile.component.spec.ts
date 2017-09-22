@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -9,6 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';
+
+@Component({
+  template: '',
+  selector: 'app-profile-image'
+})
+class StubProfileImageComponent {
+  @Input() currentImage: any;
+  @Output() imageChanged = new EventEmitter<any>();
+}
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -32,7 +42,10 @@ describe('ProfileComponent', () => {
         SharedModule,
         ReactiveFormsModule
       ],
-      declarations: [ ProfileComponent ],
+      declarations: [
+        ProfileComponent,
+        StubProfileImageComponent
+      ],
       providers: [
         { provide: UserService, useValue: userServiceStub },
         { provide: BroadcastService, useValue: broadcastServiceStub }
