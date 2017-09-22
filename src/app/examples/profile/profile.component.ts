@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { MdSnackBar } from '@angular/material';
 import { FileUploader, FileItem } from 'ng2-file-upload/ng2-file-upload';
+import { ImageCropperComponent, CropperSettings } from 'ng2-img-cropper';
 import { UserService } from '../../core/user/user.service';
 import { User } from '../../core/user/user.model';
 import { BroadcastService } from '../../core/broadcast.service';

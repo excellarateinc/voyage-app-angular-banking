@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { ExamplesRoutingModule } from './examples-routing.module';
 import { FileUploadModule } from 'ng2-file-upload/ng2-file-upload';
+import { ImageCropperModule } from 'ng2-img-cropper';
 import { SharedModule } from '../shared/shared.module';
 import { ProfileComponent } from './profile/profile.component';
 import { AccountsDashboardComponent } from './banking/accounts-dashboard/accounts-dashboard.component';
@@ -22,6 +23,7 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
     ChartsModule,
     ExamplesRoutingModule,
     FileUploadModule,
+    ImageCropperModule,
     SharedModule
   ],
   declarations: [
