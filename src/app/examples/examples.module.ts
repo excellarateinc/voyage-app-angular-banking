@@ -13,6 +13,7 @@ import { AccountsDashboardComponent } from './banking/accounts-dashboard/account
 import { TransferComponent } from './banking/transfer/transfer.component';
 import { AccountsService } from './banking/accounts.service';
 import { CreateAccountComponent } from './banking/create-account/create-account.component';
+import { ProfileImageComponent } from './profile/profile-image/profile-image.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
     AccountsDashboardComponent,
     ProfileComponent,
     TransferComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    ProfileImageComponent
   ],
   exports: [ AccountsDashboardComponent ],
   providers: [ AccountsService ]

@@ -4,12 +4,13 @@
       <md-spinner *ngIf="loading"></md-spinner>
       <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
         <div fxFlex.gt-sm="18" style="margin-bottom:10px;">
-          <div *ngIf="user != null" class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
+          <!-- <div *ngIf="user != null" class="profile-image" (click)="initFileUpload()" appProfileImage [image]="user?.profileImage" [preview]="uploadItem?._file" (dataUrlReady)="onProfileImageChange($event)">
             <input type="file" ng2FileSelect [uploader]="uploader" #uploaderInput style="display:none" />
             <span class="change-image">
               Change
             </span>
-          </div>
+          </div> -->
+          <app-profile-image (imageChanged)="onProfileImageChange($event)"></app-profile-image>
         </div>
         <div fxFlex.gt-sm>
           <form *ngIf="profileForm" fxLayout="column" [formGroup]="profileForm" (ngSubmit)="saveProfile()" novalidate>
