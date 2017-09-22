@@ -72,13 +72,12 @@ describe('VerificationComponent', () => {
       expect(component.verificationFailed).toBe(true);
     });
 
-    // TODO: create wrapper for window.
-    // it('should call the verify service successfully if form is valid', () => {
-    //   spyOn(verificationService, 'verify').and.returnValue(Observable.create(o => o.next()));
-    //   component.verificationForm.get('code').setValue('123456');
-    //   component.verify();
-    //   expect(verificationService.verify).toHaveBeenCalled();
-    //   expect(component.verificationFailed).toBe(false);
-    // });
+    it('should call the verify service successfully if form is valid', () => {
+      spyOn(verificationService, 'verify').and.returnValue(Observable.create(o => o.next()));
+      component.verificationForm.get('code').setValue('123456');
+      component.verify();
+      expect(verificationService.verify).toHaveBeenCalled();
+      expect(component.verificationFailed).toBe(false);
+    });
   });
 });
