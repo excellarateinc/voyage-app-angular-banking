@@ -17,6 +17,7 @@ export class AccountsDashboardComponent implements OnInit {
   accounts: Array<Account>;
   working = false;
   lineChart: any;
+  lineChart2: any;
 
   constructor(private accountsService: AccountsService) { }
 
@@ -47,22 +48,59 @@ export class AccountsDashboardComponent implements OnInit {
   }
 
   private buildLineChart(): void {
-    this.lineChart.data = [1, 2, 3, 4, 5];
+    const lineData: any = { data: [], label: '', lineTension: 0 };
+    lineData.data = [1, 2, 4, 5, 4, 6, 3, 7, 8];
+    this.lineChart.data.push(lineData);
+    this.lineChart2.data.push(lineData);
   }
 
   private initializeCharts() {
     this.lineChart = {
       data: [],
-      labels: ['', '', '', '', ''],
+      labels: ['', '', '', '', '', '', '', '', ''],
       options: { },
       colors: [
         {
-          backgroundColor: 'rgba(60, 191, 164, 0.2)',
-          borderColor: 'rgba(60, 191, 164, 1)'
+          backgroundColor: 'rgba(0, 134, 222, 0.2)',
+          borderColor: 'rgba(0, 134, 222, 1)'
         }
       ],
       legend: false,
       type: 'line'
     };
+
+    this.lineChart2 = {
+      data: [],
+      labels: ['', '', '', '', '', '', '', '', ''],
+      options: { },
+      colors: [
+        {
+          backgroundColor: 'rgba(255, 134, 5, 0.2)',
+          borderColor: 'rgba(255, 134, 5, 1)'
+        }
+      ],
+      legend: false,
+      type: 'line'
+    };
+
+    const scales = {
+      xAxes: [{
+        display: false,
+        gridLines: {
+          display: false,
+          drawBorder: false
+        }
+      }],
+      yAxes: [{
+        display: false,
+        gridLines: {
+          display: false,
+          drawBorder: false
+        }
+      }]
+    };
+
+    this.lineChart.options.scales = scales;
+    this.lineChart2.options.scales = scales;
   }
 }
