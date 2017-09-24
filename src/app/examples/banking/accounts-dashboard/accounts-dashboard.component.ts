@@ -15,58 +15,54 @@ import { TransactionType } from '../transaction-type.enum';
 export class AccountsDashboardComponent implements OnInit {
   transactions: Array<Transaction>;
   accounts: Array<Account>;
-  barChart: any;
   working = false;
+  lineChart: any;
 
   constructor(private accountsService: AccountsService) { }
 
   ngOnInit() {
     this.working = true;
+    this.initializeCharts();
 
     this.accountsService.getAccounts()
       .subscribe(accounts => {
         this.accounts = accounts;
         this.working = false;
-        this.buildBarChart(this.accounts);
+        this.buildLineChart();
       });
 
     this.accountsService.getRecentTransactions()
-      .subscribe(transactions => {
-        this.transactions = transactions;
-      });
+      .subscribe(transactions => this.transactions = transactions);
   }
 
-  private buildBarChart(accounts: Array<Account>): void {
-    this.barChart = {
+  get totalBalance(): number {
+    if (!this.accounts) {
+      return 0;
+    }
+    let balance = 0;
+    for (let i = 0; i < this.accounts.length; i++){
+      balance += this.accounts[i].balance;
+    }
+    return balance;
+  }
+
+  private buildLineChart(): void {
+    this.lineChart.data = [1, 2, 3, 4, 5];
+  }
+
+  private initializeCharts() {
+    this.lineChart = {
       data: [],
-      labels: ['Current Balance'],
-      options: {
-        scaleShowVerticalLines: false,
-        responsive: true
-      },
+      labels: ['', '', '', '', ''],
+      options: { },
       colors: [
         {
-          backgroundColor: '#00838f'
-        },
-        {
-          backgroundColor: '#37474f'
-        },
-        {
-          backgroundColor: '#005662'
-        },
-        {
-          backgroundColor: '#4fb3bf'
+          backgroundColor: 'rgba(60, 191, 164, 0.2)',
+          borderColor: 'rgba(60, 191, 164, 1)'
         }
       ],
       legend: false,
-      type: 'bar'
+      type: 'line'
     };
-
-    for (let i = 0; i < accounts.length; i++) {
-      this.barChart.data.push({
-        data: [ accounts[i].balance ],
-        label: accounts[i].name
-      });
-    }
   }
 }

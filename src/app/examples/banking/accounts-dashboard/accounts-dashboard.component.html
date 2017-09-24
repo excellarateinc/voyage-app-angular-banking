@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayout.lt-lg="column">
   <md-card fxFlex.lt-lg="100" fxFlex="50">
     <div fxLayout="row">
-      <h4 class="card-title">My Accounts</h4>
+      <h4 class="card-title">Cash Accounts</h4>
     </div>
     <div fxLayout="column">
       <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
@@ -10,22 +10,48 @@
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
-        <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+          <span class="activity-account">Available balance</span>
+        </div>
+      </div>
+      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0" style="border-bottom:none;">
+        <span fxFlex></span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">
+            <strong>{{totalBalance | currency:'USD':true}}</strong>
+          </span>
+          <span class="activity-account">Total available balance</span>
+        </div>
       </div>
     </div>
   </md-card>
+
   <md-card fxFlex.lt-lg="100" fxFlex="50">
     <div fxLayout="row">
-      <h4 class="card-title">Account Balances</h4>
+      <h4 class="card-title">Credit</h4>
     </div>
-    <div fxLayout="row" *ngIf="barChart != null">
-        <canvas baseChart
-          [datasets]="barChart.data"
-          [labels]="barChart.labels"
-          [options]="barChart.options"
-          [legend]="barChart.legend"
-          [colors]="barChart.colors"
-          [chartType]="barChart.type"></canvas>
+    <div fxLayout="column">
+      <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
+        <div fxLayout="column">
+          <span class="activity-description">{{account.name}}</span>
+          <span class="activity-account">#{{account.accountNumber}}</span>
+        </div>
+        <span fxFlex></span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">{{account.balance | currency:'USD':true}}</span>
+          <span class="activity-account">Available balance</span>
+        </div>
+      </div>
+      <div fxLayout="row" class="voyage-table-row" *ngIf="accounts?.length > 0" style="border-bottom:none;">
+        <span fxFlex></span>
+        <div fxLayout="column" style="text-align: end;">
+          <span class="activity-amount">
+            <strong>{{totalBalance | currency:'USD':true}}</strong>
+          </span>
+          <span class="activity-account">Total available balance</span>
+        </div>
+      </div>
     </div>
   </md-card>
 </div>
