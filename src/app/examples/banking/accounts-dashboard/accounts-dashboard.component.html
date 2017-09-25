@@ -10,15 +10,15 @@
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
-        <span style="margin-right: 10px;">
+        <span style="margin-right: 10px;" fxHide.xs>
           <div *ngIf="lineChart.data.length > 0">
             <canvas baseChart
-                [datasets]="lineChart.data"
-                [labels]="lineChart.labels"
-                [options]="lineChart.options"
-                [colors]="lineChart.colors"
-                [legend]="lineChart.legend"
-                [chartType]="lineChart.type" style="width:150px; height:50px;"></canvas>
+              [datasets]="lineChart.data"
+              [labels]="lineChart.labels"
+              [options]="lineChart.options"
+              [colors]="lineChart.colors"
+              [legend]="lineChart.legend"
+              [chartType]="lineChart.type" style="width:150px; height:50px;"></canvas>
           </div>
         </span>
         <div fxLayout="column" style="text-align: end;">
@@ -49,15 +49,15 @@
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
-        <span style="margin-right: 10px;">
+        <span style="margin-right: 10px;" fxHide.xs>
           <div *ngIf="lineChart2.data.length > 0">
             <canvas baseChart
-                [datasets]="lineChart2.data"
-                [labels]="lineChart2.labels"
-                [options]="lineChart2.options"
-                [colors]="lineChart2.colors"
-                [legend]="lineChart2.legend"
-                [chartType]="lineChart2.type" style="width:150px; height:50px;"></canvas>
+              [datasets]="lineChart2.data"
+              [labels]="lineChart2.labels"
+              [options]="lineChart2.options"
+              [colors]="lineChart2.colors"
+              [legend]="lineChart2.legend"
+              [chartType]="lineChart2.type" style="width:150px; height:50px;"></canvas>
           </div>
         </span>
         <div fxLayout="column" style="text-align: end;">
