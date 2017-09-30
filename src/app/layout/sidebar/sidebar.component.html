@@ -17,13 +17,19 @@
         <li>
           <a class="nav-item-container" routerLink="/examples/banking/transfer" routerLinkActive="active">
             <i class="material-icons">attach_money</i>
-            Transfer
+            Transfer & Pay
+          </a>
+        </li>
+        <li>
+          <a class="nav-item-container" routerLink="/examples/banking/transfer" routerLinkActive="active">
+            <i class="material-icons">attach_money</i>
+            Send Money
           </a>
         </li>
         <li>
           <a class="nav-item-container" routerLink="/chat" routerLinkActive="active">
             <i class="material-icons">chat</i>
-            Chat
+            Customer Service
           </a>
         </li>
         <li *ngIf="isAdmin">
@@ -33,10 +39,29 @@
           </a>
         </li>
         <div class="nav-section-divider"></div>
+
+        <li style="margin-left:40px;">
+          <span style="font-size:18px;font-weight:bold;color:#11043C;">Planning & Tools</span>
+        </li>
+        <div style="border-bottom: 1px solid #FF2700; width: 35px; margin-left: 90px; margin-top: 5px;"></div>
+        <li style="margin-left:40px; margin-top:5px;">
+          <a style="text-decoration: none; color:#01255C;" routerLink="/">View your FICO Credit Score</a>
+        </li>
+        <li style="margin-left:40px; margin-top:10px;">
+          <a style="text-decoration: none; color:#01255C;" routerLink="/">Calculate debt-to-income ratio</a>
+        </li>
+        <li style="margin-left:40px; margin-top:10px;">
+          <a style="text-decoration: none; color:#01255C;" routerLink="/">View My Retirement Plan</a>
+        </li>
+        <li style="margin-left:40px; margin-top:10px;">
+          <a style="text-decoration: none; color:#01255C;" routerLink="/">View My Credit Options</a>
+        </li>
+
+        <div class="nav-section-divider"></div>
         <li>
           <a class="nav-item-container" routerLinkActive="active">
             <i class="material-icons">help</i>
-            Help & feedback
+            Help & Feedback
           </a>
         </li>
         <li>
