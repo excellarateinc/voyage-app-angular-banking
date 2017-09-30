@@ -18,7 +18,7 @@ export class WebNotificationsService {
     if (this.permission === 'denied') {
       return;
     }
-    navigator.serviceWorker.register('../../assets/sw.js').then(registration => {
+    navigator.serviceWorker.register('assets/sw.js').then(registration => {
       registration.showNotification(title, { body, icon: '/favicon.ico', tag: 'notification' });
     });
   }

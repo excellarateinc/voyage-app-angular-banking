@@ -29,7 +29,7 @@ export class ProfileImageDirective implements OnChanges {
     }
 
     if (!this.image && !this.preview) {
-      element.nativeElement.style.backgroundImage = `url('../../assets/images/stock-profile.jpg')`;
+      element.nativeElement.style.backgroundImage = `url('assets/images/stock-profile.jpg')`;
     }
   }
 }
