@@ -19,7 +19,7 @@ export class WebNotificationsService {
       return;
     }
     navigator.serviceWorker.register('assets/sw.js').then(registration => {
-      registration.showNotification(title, { body, icon: '/favicon.ico', tag: 'notification' });
+      registration.showNotification(title, { body, icon: 'favicon.ico', tag: 'notification' });
     });
   }
 }
