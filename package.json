@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:qa": "ng build --environment=qa --target=production",
+    "build:qa": "ng build --environment=qa --target=production --base-href /voyage-ms/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
