@@ -5,5 +5,6 @@ export const environment = {
   SERVER_URL: 'https://qa.lighthousesoftware.com/voyage-ms-web',
   OAUTH_REDIRECT_URL: 'https://qa.lighthousesoftware.com/voyage-ms/',
   OAUTH_CLIENT_ID: 'client-super-qa',
-  OAUTH_CLIENT_SECRET: 'secret'
+  OAUTH_CLIENT_SECRET: 'secret',
+  APP_HOME: '/voyage-ms/'
 };

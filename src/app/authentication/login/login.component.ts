@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { LoginService } from './login.service';
 import { Login } from './login.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const login = this.loginForm.value as Login;
     this.loginService.login(login)
       .subscribe(result => {
-        this.window.location.href = '/';
+        this.window.location.href = `${environment.APP_HOME}`;
       }, error => this.loginFailed = true);
   }
 

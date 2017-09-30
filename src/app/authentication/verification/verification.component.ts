@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VerificationService } from './verification.service';
 import { Verification } from './verification.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-verification',
@@ -38,7 +39,7 @@ export class VerificationComponent implements OnInit {
     const verification = this.verificationForm.value as Verification;
     this.verificationService.verify(verification)
       .subscribe(result => {
-        this.window.location.href = '/';
+        this.window.location.href = `${environment.APP_HOME}`;
       }, () => {
         this.verificationFailed = true;
       });
