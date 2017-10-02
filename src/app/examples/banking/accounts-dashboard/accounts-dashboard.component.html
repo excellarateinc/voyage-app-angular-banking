@@ -2,23 +2,28 @@
   <md-card fxFlex.gt-md="50">
     <div fxLayout="row">
       <h4 class="card-title">Cash Accounts</h4>
+      <span fxFlex></span>
+      <button md-icon-button [mdMenuTriggerFor]="actionsMenu" style="margin-top: -15px; margin-right: -15px;">
+        <md-icon>more_vert</md-icon>
+      </button>
     </div>
     <div fxLayout="column">
-      <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
+      <md-spinner *ngIf="working"></md-spinner>
+      <div fxLayout="row" *ngFor="let account of cashAccounts" class="voyage-table-row">
         <div fxLayout="column">
           <span class="activity-description">{{account.name}}</span>
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
         <span style="margin-right: 10px;" fxHide.xs>
-          <div *ngIf="lineChart.data.length > 0">
+          <div *ngIf="account.chart.data[0]?.data.length > 1">
             <canvas baseChart
-              [datasets]="lineChart.data"
-              [labels]="lineChart.labels"
-              [options]="lineChart.options"
-              [colors]="lineChart.colors"
-              [legend]="lineChart.legend"
-              [chartType]="lineChart.type" style="width:150px; height:50px;"></canvas>
+              [datasets]="account.chart.data"
+              [labels]="account.chart.labels"
+              [options]="account.chart.options"
+              [colors]="account.chart.colors"
+              [legend]="account.chart.legend"
+              [chartType]="account.chart.type" style="width:150px; height:50px;"></canvas>
           </div>
         </span>
         <div fxLayout="column" style="text-align: end;">
@@ -30,7 +35,7 @@
         <span fxFlex></span>
         <div fxLayout="column" style="text-align: end;">
           <span class="activity-amount">
-            <strong>{{totalBalance | currency:'USD':true}}</strong>
+            <strong>{{totalCashBalance | currency:'USD':true}}</strong>
           </span>
           <span class="activity-account">Total available balance</span>
         </div>
@@ -41,23 +46,28 @@
   <md-card fxFlex.gt-md="50">
     <div fxLayout="row">
       <h4 class="card-title">Credit</h4>
+      <span fxFlex></span>
+      <button md-icon-button [mdMenuTriggerFor]="actionsMenu" style="margin-top: -15px; margin-right: -15px;">
+        <md-icon>more_vert</md-icon>
+      </button>
     </div>
     <div fxLayout="column">
-      <div fxLayout="row" *ngFor="let account of accounts" class="voyage-table-row">
+      <md-spinner *ngIf="working"></md-spinner>
+      <div fxLayout="row" *ngFor="let account of creditAccounts" class="voyage-table-row">
         <div fxLayout="column">
           <span class="activity-description">{{account.name}}</span>
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
         <span style="margin-right: 10px;" fxHide.xs>
-          <div *ngIf="lineChart2.data.length > 0">
+          <div *ngIf="account.chart.data[0]?.data.length > 1">
             <canvas baseChart
-              [datasets]="lineChart2.data"
-              [labels]="lineChart2.labels"
-              [options]="lineChart2.options"
-              [colors]="lineChart2.colors"
-              [legend]="lineChart2.legend"
-              [chartType]="lineChart2.type" style="width:150px; height:50px;"></canvas>
+              [datasets]="account.chart.data"
+              [labels]="account.chart.labels"
+              [options]="account.chart.options"
+              [colors]="account.chart.colors"
+              [legend]="account.chart.legend"
+              [chartType]="account.chart.type" style="width:150px; height:50px;"></canvas>
           </div>
         </span>
         <div fxLayout="column" style="text-align: end;">
@@ -69,7 +79,7 @@
         <span fxFlex></span>
         <div fxLayout="column" style="text-align: end;">
           <span class="activity-amount">
-            <strong>{{totalBalance | currency:'USD':true}}</strong>
+            <strong>{{totalCreditBalance | currency:'USD':true}}</strong>
           </span>
           <span class="activity-account">Total available balance</span>
         </div>
@@ -83,6 +93,7 @@
     <div fxLayout="row">
       <h4 class="card-title">Recent Activity</h4>
     </div>
+    <md-spinner *ngIf="working"></md-spinner>
     <div fxLayout="row" class="voyage-table-row" *ngFor="let transaction of transactions;">
       <div fxLayout="column" class="date-stamp">
         <span class="month">{{transaction.date | date:'MMM'}}</span>
@@ -101,3 +112,9 @@
     </div>
   </md-card>
 </div>
+
+<md-menu #actionsMenu="mdMenu" [overlapTrigger]="false" xPosition="before">
+  <button md-menu-item routerLink="/examples/banking/create-account">
+    <span>Create Account</span>
+  </button>
+</md-menu>
