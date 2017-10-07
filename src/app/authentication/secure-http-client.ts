@@ -58,13 +58,16 @@ export class SecureHttpClient extends Http {
         return Observable.throw(err);
       }
 
-      const errorList = JSON.parse(err._body);
-      const error = errorList[0];
-      if (error.error === 'UserDisabled') {
-        this.authenticationService.logout();
-      } else if (error.error === 'RequireVerification') {
-        this.authenticationService.goToVerification();
+      const errorBody = JSON.parse(err._body);
+      if (errorBody && errorBody instanceof Array) {
+        const error = errorBody[0];
+        if (error.error === 'RequireVerification') {
+          this.authenticationService.goToVerification();
+          return Observable.throw(err);
+        }
       }
+
+      this.authenticationService.logout();
       return Observable.throw(err);
     });
   }
