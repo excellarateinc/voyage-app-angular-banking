@@ -7,24 +7,24 @@
   border: 1px solid #5a5a5a;
   padding-top: 1px;
   text-align: center;
-  width: 50px;
-  min-width: 50px;
-  height: 50px;
-  max-height: 50px;
+  width: 45px;
+  min-width: 45px;
+  height: 45px;
+  max-height: 45px;
 
   .month {
     color: #5a5a5a;
-    font-size: 18px;
+    font-size: 17px;
     padding: 0 2px;
     font-weight: bold;
     text-transform: uppercase;
   }
 
   .day {
-    font-size: 22px;
+    font-size: 20px;
     background-color: #5a5a5a;
     color: #fff;
-    padding: 4px;
+    padding: 2px;
     font-weight: bold;
   }
 }
@@ -44,18 +44,8 @@
   font-size: 18px;
 }
 
-.voyage-table-header {
-  font-weight:bold;
-  border-bottom: 1px solid #dddddd;
-  padding-bottom: 5px;
-}
-
 .voyage-table-row {
   padding-top: 8px;
   padding-bottom: 8px;
   border-bottom: 1px solid #dddddd;
-}
-
-.dark-row {
-  background-color: #f6f6f6;
 }

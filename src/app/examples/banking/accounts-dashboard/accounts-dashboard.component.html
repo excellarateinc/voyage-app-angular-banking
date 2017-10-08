@@ -94,7 +94,7 @@
       <h4 class="card-title">Recent Activity</h4>
     </div>
     <md-spinner *ngIf="working"></md-spinner>
-    <div fxLayout="row" class="voyage-table-row" *ngFor="let transaction of transactions;">
+    <div fxLayout="row" class="voyage-table-row" *ngFor="let transaction of transactions">
       <div fxLayout="column" class="date-stamp">
         <span class="month">{{transaction.date | date:'MMM'}}</span>
         <span class="day">{{transaction.date | date:'d'}}</span>
