@@ -76,12 +76,7 @@ export class AccountsDashboardComponent implements OnInit {
         data: [],
         labels: [],
         options: { scales: {} },
-        colors: [
-          {
-            backgroundColor: 'rgba(0, 134, 222, 0.2)',
-            borderColor: 'rgba(0, 134, 222, 1)'
-          }
-        ],
+        colors: [],
         legend: false,
         type: 'line'
       };
@@ -105,6 +100,18 @@ export class AccountsDashboardComponent implements OnInit {
       const lineData: any = { data: [], label: '', lineTension: 0 };
 
       const account = accounts[i];
+      if (account.type !== AccountType.Credit) {
+        lineChart.colors.push({
+          backgroundColor: 'rgba(0, 134, 222, 0.2)',
+          borderColor: 'rgba(0, 134, 222, 1)'
+        });
+      } else {
+        lineChart.colors.push(          {
+          backgroundColor: 'rgba(255, 134, 5, 0.2)',
+          borderColor: 'rgba(255, 134, 5, 1)'
+        });
+      }
+
       const transactions = account.transactions.reverse();
       for (let j = 0; j < transactions.length; j++) {
         lineChart.labels.push('');

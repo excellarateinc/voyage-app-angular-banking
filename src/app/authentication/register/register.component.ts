@@ -13,6 +13,7 @@ import { Phone } from '../../core/user/phone.model';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registrationErrors: Array<any>;
+  working = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,14 +29,17 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
+    this.working = true;
     const register = this.registerForm.value as Register;
     this.registerService.register(register)
       .subscribe(result => {
-        this.snackBar.open('Registration successful', null, {
-          duration: 2000,
-        });
+        this.snackBar.open('Registration successful', null, { duration: 2000 });
         this.router.navigate(['/authentication/login']);
-      }, errors => this.registrationErrors = errors);
+        this.working = false;
+      }, errors => {
+        this.registrationErrors = errors;
+        this.working = false;
+      });
   }
 
   get phoneNumbers(): FormArray {

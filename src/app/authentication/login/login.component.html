@@ -3,6 +3,7 @@
   <div fxLayout="row">
     <span fxFlex></span>
     <md-card fxFlex.md="50" style="margin-top:100px;">
+      <md-spinner *ngIf="working" class="loading-spinner" style="position: fixed;"></md-spinner>
       <div fxLayout="column">
         <div fxLayout="row" style="margin-top:25px;">
           <span fxFlex></span>
@@ -37,7 +38,9 @@
             </div>
           </div>
           <div fxLayout="column" style="margin-top:60px;">
-            <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+            <button (click)="login()" color="primary" md-raised-button type="submit" [disabled]="working">
+              LOGIN
+            </button>
             <span>&nbsp;</span>
             <div fxLayout="row">
               <span style="margin: 0 auto;">Don't have an account? <a routerLink="/authentication/register">Sign Up</a></span>
@@ -94,7 +97,9 @@
         <span>&nbsp;</span>
         <span>&nbsp;</span>
         <div fxLayout="column">
-          <button (click)="login()" color="primary" md-raised-button type="submit">LOGIN</button>
+          <button (click)="login()" color="primary" md-raised-button type="submit">
+            LOGIN
+          </button>
           <span>&nbsp;</span>
           <div fxLayout="row">
             <span style="font-size:16px;margin: 0 auto; color:white;">
