@@ -12,12 +12,17 @@ import { UserService } from '../../core/user/user.service';
 export class UserAdminComponent implements OnInit {
   users: Array<User>;
   selectedUser: User;
+  working = false;
 
   constructor(private userService: UserService, private snackBar: MdSnackBar) { }
 
   ngOnInit() {
+    this.working = true;
     this.userService.getUsers()
-      .subscribe(result => this.users = result);
+      .subscribe(result => {
+        this.users = result;
+        this.working = false;
+      });
   }
 
   onToggle(): void {

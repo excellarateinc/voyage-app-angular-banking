@@ -3,6 +3,7 @@
   <div fxLayout="row">
     <span fxFlex></span>
     <md-card fxFlex.md="80" fxFlex.lg="60" fxFlex.xl="50" style="margin-top:100px;">
+      <md-spinner *ngIf="working" class="loading-spinner"></md-spinner>
       <div>Create Account</div>
       <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
         <div fxLayout="column">
@@ -65,9 +66,13 @@
             </span>
           </div>
           <div fxLayout="column" style="margin-top: 20px;">
-            <button md-raised-button color="primary" type="submit">Register</button>
+            <button md-raised-button color="primary" type="submit" [disabled]="working">
+              Register
+            </button>
             <span>&nbsp;</span>
-            <button type="button" routerLink="/authentication/login" color="accent" md-raised-button>Cancel</button>
+            <button type="button" routerLink="/authentication/login" color="accent" md-raised-button  [disabled]="working">
+              Cancel
+            </button>
           </div>
         </div>
       </form>

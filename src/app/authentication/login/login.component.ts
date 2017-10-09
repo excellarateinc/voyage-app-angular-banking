@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   loginFailed = false;
   isMobile = false;
+  working = false;
   private watcher: Subscription;
 
   constructor(
@@ -41,11 +42,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.invalid) {
       return;
     }
+    this.working = true;
     const login = this.loginForm.value as Login;
     this.loginService.login(login)
       .subscribe(result => {
+        this.working = false;
         this.window.location.href = `${environment.APP_HOME}`;
-      }, error => this.loginFailed = true);
+      }, error => {
+        this.loginFailed = true;
+        this.working = false;
+      });
   }
 
   private initializeForm(): void {

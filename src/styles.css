@@ -158,3 +158,13 @@ https://github.com/angular/material2/issues/998 */
 .light-input .mat-select-value-text {
   color: white !important;
 }
+
+.loading-spinner {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.voyage-snackbar {
+  background-color: #0d47a1 !important;
+  margin-bottom: 10px !important;
+}

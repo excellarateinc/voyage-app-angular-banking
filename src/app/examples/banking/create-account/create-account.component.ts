@@ -31,7 +31,7 @@ export class CreateAccountComponent implements OnInit {
     const account = this.accountForm.value as Account;
     this.accountsService.createAccount(account)
       .subscribe(result => {
-        this.snackBar.open(`${result.name} created successfully`, null, { duration: 5000 });
+        this.snackBar.open(`${result.name} created successfully`, null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
         this.router.navigate(['/examples/banking/dashboard']);
       }, error => {
         this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });

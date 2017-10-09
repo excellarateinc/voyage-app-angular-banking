@@ -12,7 +12,6 @@ import { CoreModule } from './core/core.module';
 import { LayoutModule } from './layout/layout.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SecureHttpClient } from './authentication/secure-http-client';
-import { AuthGuardService } from './authentication/auth-guard.service';
 import { AuthenticationService } from './authentication/authentication.service';
 
 export function secureHttpClientFactory(

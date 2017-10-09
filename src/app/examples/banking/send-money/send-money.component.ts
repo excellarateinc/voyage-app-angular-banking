@@ -4,16 +4,16 @@ import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { AccountsService } from '../accounts.service';
 import { Account } from '../account.model';
-import { Transfer } from './transfer.model';
+import { SendMoney } from './send-money.model';
 
 @Component({
-  selector: 'app-transfer',
-  templateUrl: './transfer.component.html',
-  styleUrls: ['./transfer.component.scss']
+  selector: 'app-send-money',
+  templateUrl: './send-money.component.html',
+  styleUrls: ['./send-money.component.scss']
 })
-export class TransferComponent implements OnInit {
+export class SendMoneyComponent implements OnInit {
   accounts: Array<Account>;
-  transferForm: FormGroup;
+  sendMoneyForm: FormGroup;
 
   constructor(
     private accountsService: AccountsService,
@@ -28,15 +28,15 @@ export class TransferComponent implements OnInit {
     this.initializeForm();
   }
 
-  transfer(): void {
-    if (this.transferForm.invalid) {
+  sendMoney(): void {
+    if (this.sendMoneyForm.invalid) {
       return;
     }
 
-    const transfer = this.transferForm.value as Transfer;
-    this.accountsService.transfer(transfer)
+    const sendModel = this.sendMoneyForm.value as SendMoney;
+    this.accountsService.sendMoney(sendModel)
       .subscribe(result => {
-        this.snackBar.open('Transfer completed successfully', null, { duration: 5000 });
+        this.snackBar.open('Completed successfully', null, { duration: 5000 });
         this.router.navigate(['/examples/banking/dashboard']);
       }, error => {
         this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
@@ -44,9 +44,9 @@ export class TransferComponent implements OnInit {
   }
 
   private initializeForm(): void {
-    this.transferForm = this.formBuilder.group({
+    this.sendMoneyForm = this.formBuilder.group({
       fromAccountId: [null, Validators.required],
-      toAccountId: [null, Validators.required],
+      toEmailAddress: [null, Validators.required],
       amount: [null, Validators.required],
       memo: ['']
     });
