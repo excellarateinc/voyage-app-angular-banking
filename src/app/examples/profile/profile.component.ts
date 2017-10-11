@@ -48,7 +48,7 @@ export class ProfileComponent implements OnInit {
         user => {
           this.user = user;
           this.broadcastService.emitProfileUpdated(this.user);
-          this.snackbar.open('Profile updated successfully', null, { duration: 5000 });
+          this.snackbar.open('Profile updated successfully', null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
         },
         errors => this.profileErrors = errors);
   }

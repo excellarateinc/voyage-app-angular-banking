@@ -36,10 +36,10 @@ export class TransferComponent implements OnInit {
     const transfer = this.transferForm.value as Transfer;
     this.accountsService.transfer(transfer)
       .subscribe(result => {
-        this.snackBar.open('Transfer completed successfully', null, { duration: 5000 });
+        this.snackBar.open('Transfer completed successfully', null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
         this.router.navigate(['/examples/banking/dashboard']);
       }, error => {
-        this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
+        this.snackBar.open(error[0].errorDescription, null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
       });
   }
 

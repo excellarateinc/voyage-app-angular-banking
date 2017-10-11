@@ -36,10 +36,10 @@ export class SendMoneyComponent implements OnInit {
     const sendModel = this.sendMoneyForm.value as SendMoney;
     this.accountsService.sendMoney(sendModel)
       .subscribe(result => {
-        this.snackBar.open('Completed successfully', null, { duration: 5000 });
+        this.snackBar.open('Completed successfully', null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
         this.router.navigate(['/examples/banking/dashboard']);
       }, error => {
-        this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
+        this.snackBar.open(error[0].errorDescription, null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
       });
   }
 

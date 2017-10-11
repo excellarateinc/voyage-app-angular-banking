@@ -34,7 +34,7 @@ export class CreateAccountComponent implements OnInit {
         this.snackBar.open(`${result.name} created successfully`, null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
         this.router.navigate(['/examples/banking/dashboard']);
       }, error => {
-        this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
+        this.snackBar.open(error[0].errorDescription, null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
       });
   }
 

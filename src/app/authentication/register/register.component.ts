@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     const register = this.registerForm.value as Register;
     this.registerService.register(register)
       .subscribe(result => {
-        this.snackBar.open('Registration successful', null, { duration: 2000 });
+        this.snackBar.open('Registration successful. Log in to start your session.', null, { duration: 5000 });
         this.router.navigate(['/authentication/login']);
         this.working = false;
       }, errors => {

@@ -31,9 +31,9 @@ export class UserAdminComponent implements OnInit {
     userStatus.isVerifyRequired = this.selectedUser.isVerifyRequired;
     this.userService.toggleStatus(this.selectedUser.id, userStatus)
       .subscribe(result => {
-        this.snackBar.open('User updated successfully', null, { duration: 5000 });
+        this.snackBar.open('User updated successfully', null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
       }, error => {
-        this.snackBar.open(error[0].errorDescription, null, { duration: 5000 });
+        this.snackBar.open(error[0].errorDescription, null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
       });
   }
 }
