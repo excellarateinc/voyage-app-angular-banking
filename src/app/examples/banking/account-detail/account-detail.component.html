@@ -1,3 +1,54 @@
-<p>
-  account-detail works!
-</p>
+<div fxLayout="row">
+  <md-card fxFlex>
+    <div fxLayout="row">
+      <h4 class="card-title">{{account?.name}} Details</h4>
+      <span fxFlex></span>
+      <div fxLayout="column">
+        <span>Available Balance</span>
+        <span>{{account?.balance | currency:'USD':true}}</span>
+      </div>
+    </div>
+    <form *ngIf="accountForm" [formGroup]="accountForm" novalidate>
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <md-input-container fxFlex>
+            <input mdInput placeholder="Account Name" formControlName="name" required maxlength="20">
+            <md-error *ngIf="accountForm.controls['name'].hasError('required')">
+              Account Name is required
+            </md-error>
+          </md-input-container>
+        </div>
+        <div fxLayout="row">
+          <span fxFlex></span>
+          <button md-raised-button color="primary" type="submit">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </md-card>
+</div>
+
+<div fxLayout="row">
+  <md-card fxFlex>
+    <div fxLayout="row">
+      <h4 class="card-title">Recent Activity</h4>
+    </div>
+    <div fxLayout="row" class="voyage-table-row" *ngFor="let transaction of account?.transactions">
+      <div fxLayout="column" class="date-stamp">
+        <span class="month">{{transaction.date | date:'MMM'}}</span>
+        <span class="day">{{transaction.date | date:'d'}}</span>
+      </div>
+      <div fxLayout="column" style="margin-left:10px;">
+        <span class="activity-description">{{transaction.description}}</span>
+        <span class="activity-account">{{transaction.accountName}}</span>
+      </div>
+      <span fxFlex></span>
+      <div style="margin-right:10px;">
+        <span class="activity-amount" [ngClass]="{'withdrawal-action': transaction.type == 0}">
+          {{transaction.type == 0 ? '-' : ''}}{{transaction.amount | currency:'USD':true}}
+        </span>
+      </div>
+    </div>
+  </md-card>
+</div>

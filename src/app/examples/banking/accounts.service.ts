@@ -16,7 +16,13 @@ export class AccountsService {
   constructor(private http: Http) { }
 
   getAccounts(): Observable<Array<Account>> {
-    return this.http.get(`${environment.API_URL}/banking/accounts/me`)
+    return this.http.get(`${environment.API_URL}/banking/accounts`)
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
+  }
+
+  getAccountDetails(id: number): Observable<Account> {
+    return this.http.get(`${environment.API_URL}/banking/accounts/${id}/summary`)
       .map(response => response.json())
       .catch(error => Observable.throw(error.json()));
   }

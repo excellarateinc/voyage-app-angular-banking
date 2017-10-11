@@ -6,13 +6,15 @@ import { AccountsDashboardComponent } from './banking/accounts-dashboard/account
 import { TransferComponent } from './banking/transfer/transfer.component';
 import { CreateAccountComponent } from './banking/create-account/create-account.component';
 import { SendMoneyComponent } from './banking/send-money/send-money.component';
+import { AccountDetailComponent } from './banking/account-detail/account-detail.component';
 
 const exampleRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'banking/dashboard', component: AccountsDashboardComponent },
   { path: 'banking/create-account', component: CreateAccountComponent },
+  { path: 'banking/create-account', component: CreateAccountComponent },
   { path: 'banking/transfer', component: TransferComponent },
-  { path: 'banking/send-money', component: SendMoneyComponent }
+  { path: 'banking/account-details/:id', component: AccountDetailComponent }
 ];
 
 @NgModule({
