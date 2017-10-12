@@ -25,22 +25,12 @@
               Last Name is required
             </md-error>
           </md-input-container>
-          <div formArrayName="phoneNumbers">
-            <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
-              <md-input-container fxFlex="60">
-                <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
-                <md-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
-                  Phone and Type are required
-                </md-error>
-              </md-input-container>
-              <md-select placeholder="Type" fxFlex formControlName="phoneType" fxFlex required style="margin-top: 14px;">
-                <md-option value="0">Mobile</md-option>
-                <md-option value="1">Office</md-option>
-                <md-option value="2">Home</md-option>
-                <md-option value="3">Other</md-option>
-              </md-select>
-            </div>
-          </div>
+          <md-input-container>
+            <input mdInput placeholder="Mobile Phone" formControlName="phoneNumber" required>
+            <md-error *ngIf="registerForm.controls['phoneNumber'].hasError('required')">
+              Mobile Phone is required
+            </md-error>
+          </md-input-container>
           <md-input-container>
             <input mdInput placeholder="Username" formControlName="username" required>
             <md-error *ngIf="registerForm.controls['username'].hasError('required')">
@@ -102,22 +92,12 @@
             Last Name is required
           </md-error>
         </md-input-container>
-        <div formArrayName="phoneNumbers">
-          <div *ngFor="let phone of phoneNumbers.controls; let i=index" [formGroupName]="i" fxLayout="row">
-            <md-input-container fxFlex="60" class="light-input">
-              <input mdInput placeholder="Phone" formControlName="phoneNumber" required>
-              <md-error *ngIf="phoneNumbers.controls[i].controls['phoneNumber'].hasError('required')">
-                Phone and Type are required
-              </md-error>
-            </md-input-container>
-            <md-select placeholder="Type" fxFlex formControlName="phoneType" required style="margin-top: 14px;" class="light-input">
-              <md-option value="0">Mobile</md-option>
-              <md-option value="1">Office</md-option>
-              <md-option value="2">Home</md-option>
-              <md-option value="3">Other</md-option>
-            </md-select>
-          </div>
-        </div>
+        <md-input-container>
+          <input mdInput placeholder="Mobile Phone" formControlName="phoneNumber" required>
+          <md-error *ngIf="registerForm.controls['phoneNumber'].hasError('required')">
+            Mobile Phone is required
+          </md-error>
+        </md-input-container>
         <md-input-container class="light-input">
           <input mdInput placeholder="Username" formControlName="username" required>
           <md-error *ngIf="registerForm.controls['username'].hasError('required')">

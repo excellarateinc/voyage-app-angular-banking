@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     const register = this.registerForm.value as Register;
     this.registerService.register(register)
       .subscribe(result => {
-        this.snackBar.open('Registration successful. Log in to start your session.', null, { duration: 5000 });
+        this.snackBar.open('Successfully registered! Please login to your new account', null, { duration: 5000 });
         this.router.navigate(['/authentication/login']);
         this.working = false;
       }, errors => {
@@ -41,10 +41,6 @@ export class RegisterComponent implements OnInit {
         this.working = false;
       });
   }
-
-  get phoneNumbers(): FormArray {
-    return this.registerForm.get('phoneNumbers') as FormArray;
-  };
 
   private initializeForm(): void {
     this.registerForm = this.formBuilder.group({
@@ -54,12 +50,7 @@ export class RegisterComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-      phoneNumbers: this.formBuilder.array([
-        this.formBuilder.group({
-          phoneNumber: ['', Validators.required],
-          phoneType: [null, Validators.required]
-        })
-      ])
+      phoneNumber: ['', Validators.required]
     });
   }
 }
