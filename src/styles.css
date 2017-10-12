@@ -167,3 +167,8 @@ https://github.com/angular/material2/issues/998 */
 .voyage-snackbar {
   background-color: #F15B27 !important;
 }
+
+.action-link {
+  text-decoration: none;
+  color:#01255C;
+}

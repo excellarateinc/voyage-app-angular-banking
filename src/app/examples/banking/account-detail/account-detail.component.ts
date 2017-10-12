@@ -35,11 +35,21 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  updateAccount(): void {
+    if (this.accountForm.invalid) {
+      return;
+    }
+    const name = this.accountForm.get('name').value;
+    this.accountsService.updateAccount(this.account.accountId, name)
+      .subscribe((result: string) => {
+        this.account.name = result;
+      });
+  }
+
   private initializeForm(account: Account): void {
     if (account == null) {
       return;
     }
-
     this.accountForm = this.formBuilder.group({
       name: [account.name, Validators.required]
     });

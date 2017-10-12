@@ -22,7 +22,13 @@ export class AccountsService {
   }
 
   getAccountDetails(id: number): Observable<Account> {
-    return this.http.get(`${environment.API_URL}/banking/accounts/${id}/summary`)
+    return this.http.get(`${environment.API_URL}/banking/accounts/${id}`)
+      .map(response => response.json())
+      .catch(error => Observable.throw(error.json()));
+  }
+
+  updateAccount(id: number, name: string) {
+    return this.http.put(`${environment.API_URL}/banking/accounts/${id}`, { name })
       .map(response => response.json())
       .catch(error => Observable.throw(error.json()));
   }

@@ -3,16 +3,16 @@
     <div fxLayout="row">
       <h4 class="card-title">{{account?.name}} Details</h4>
       <span fxFlex></span>
-      <div fxLayout="column">
+      <div fxLayout="column" style="text-align: end;" class="activity-amount">
         <span>Available Balance</span>
         <span>{{account?.balance | currency:'USD':true}}</span>
       </div>
     </div>
-    <form *ngIf="accountForm" [formGroup]="accountForm" novalidate>
+    <form *ngIf="accountForm" [formGroup]="accountForm" (ngSubmit)="updateAccount()" novalidate autocomplete="off">
       <div fxLayout="column">
         <div fxLayout="row">
           <md-input-container fxFlex>
-            <input mdInput placeholder="Account Name" formControlName="name" required maxlength="20">
+            <input mdInput placeholder="Account Name" formControlName="name" required maxlength="128">
             <md-error *ngIf="accountForm.controls['name'].hasError('required')">
               Account Name is required
             </md-error>

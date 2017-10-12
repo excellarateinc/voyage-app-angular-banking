@@ -11,7 +11,11 @@
       <md-spinner *ngIf="working"></md-spinner>
       <div fxLayout="row" *ngFor="let account of cashAccounts" class="voyage-table-row">
         <div fxLayout="column">
-          <span class="activity-description">{{account.name}}</span>
+          <span class="activity-description">
+            <a class="action-link" [routerLink]="['/examples/banking/account-details', account.accountId]">
+              {{account.name}}
+            </a>
+          </span>
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
@@ -55,7 +59,11 @@
       <md-spinner *ngIf="working"></md-spinner>
       <div fxLayout="row" *ngFor="let account of creditAccounts" class="voyage-table-row">
         <div fxLayout="column">
-          <span class="activity-description">{{account.name}}</span>
+          <span class="activity-description">
+            <a class="action-link" [routerLink]="['/examples/banking/account-details', account.accountId]">
+              {{account.name}}
+            </a>
+          </span>
           <span class="activity-account">#{{account.accountNumber}}</span>
         </div>
         <span fxFlex></span>
