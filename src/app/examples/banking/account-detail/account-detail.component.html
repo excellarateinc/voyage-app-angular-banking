@@ -1,14 +1,21 @@
 <div fxLayout="row">
+  <md-toolbar style="margin:5px;" color="accent">
+    {{account?.name}}
+  </md-toolbar>
+</div>
+<div fxLayout="row">
   <md-card fxFlex>
-    <div fxLayout="row">
-      <h4 class="card-title">{{account?.name}} Details</h4>
-      <span fxFlex></span>
-      <div fxLayout="column" style="text-align: end;" class="activity-amount">
-        <span>Available Balance</span>
+    <md-spinner *ngIf="working"></md-spinner>
+    <div fxLayout="row" style="margin-bottom: 20px;">
+      <div fxLayout="column" fxFlex class="activity-amount">
+        <span><strong>Available Balance</strong></span>
         <span>{{account?.balance | currency:'USD':true}}</span>
       </div>
+      <div fxLayout="column" fxFlex class="activity-amount">
+        <span><strong>Account Type</strong></span>
+        <span>{{account?.type | accountType}}</span>
+      </div>
     </div>
-    <md-spinner *ngIf="working"></md-spinner>
     <form *ngIf="accountForm" [formGroup]="accountForm" (ngSubmit)="updateAccount()" novalidate autocomplete="off">
       <div fxLayout="column">
         <div fxLayout="row">

@@ -15,6 +15,8 @@ import { CreateAccountComponent } from './banking/create-account/create-account.
 import { ProfileImageComponent } from './profile/profile-image/profile-image.component';
 import { SendMoneyComponent } from './banking/send-money/send-money.component';
 import { AccountDetailComponent } from './banking/account-detail/account-detail.component';
+import { CreditApplicationComponent } from './banking/credit-application/credit-application.component';
+import { AccountTypePipe } from './banking/account-type.pipe';
 
 @NgModule({
   imports: [
@@ -34,7 +36,9 @@ import { AccountDetailComponent } from './banking/account-detail/account-detail.
     CreateAccountComponent,
     ProfileImageComponent,
     SendMoneyComponent,
-    AccountDetailComponent
+    AccountDetailComponent,
+    CreditApplicationComponent,
+    AccountTypePipe
   ],
   exports: [ AccountsDashboardComponent ],
   providers: [ AccountsService ]

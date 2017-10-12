@@ -7,6 +7,7 @@ import { TransferComponent } from './banking/transfer/transfer.component';
 import { CreateAccountComponent } from './banking/create-account/create-account.component';
 import { SendMoneyComponent } from './banking/send-money/send-money.component';
 import { AccountDetailComponent } from './banking/account-detail/account-detail.component';
+import { CreditApplicationComponent } from './banking/credit-application/credit-application.component';
 
 const exampleRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
@@ -14,7 +15,8 @@ const exampleRoutes: Routes = [
   { path: 'banking/create-account', component: CreateAccountComponent },
   { path: 'banking/create-account', component: CreateAccountComponent },
   { path: 'banking/transfer', component: TransferComponent },
-  { path: 'banking/account-details/:id', component: AccountDetailComponent }
+  { path: 'banking/account-details/:id', component: AccountDetailComponent },
+  { path: 'banking/credit-application', component: CreditApplicationComponent }
 ];
 
 @NgModule({

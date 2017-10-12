@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
+import { MdSnackBar } from '@angular/material';
 import { AccountsService } from '../accounts.service';
 import { Account } from '../account.model';
 
@@ -19,7 +20,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private accountsService: AccountsService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private snackBar: MdSnackBar) { }
 
   ngOnInit() {
     this.working = true;
@@ -46,6 +48,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     this.accountsService.updateAccount(this.account.accountId, name)
       .subscribe((result: string) => {
         this.account.name = result;
+        this.snackBar.open('Saved Successfully', null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
       });
   }
 

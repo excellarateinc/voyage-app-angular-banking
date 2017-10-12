@@ -3,7 +3,7 @@
     <div fxLayout="row">
       <h4 class="card-title">Cash Accounts</h4>
       <span fxFlex></span>
-      <button md-icon-button [mdMenuTriggerFor]="actionsMenu" style="margin-top: -15px; margin-right: -15px;">
+      <button md-icon-button [mdMenuTriggerFor]="cashMenu" style="margin-top: -15px; margin-right: -15px;">
         <md-icon>more_vert</md-icon>
       </button>
     </div>
@@ -51,7 +51,7 @@
     <div fxLayout="row">
       <h4 class="card-title">Credit</h4>
       <span fxFlex></span>
-      <button md-icon-button [mdMenuTriggerFor]="actionsMenu" style="margin-top: -15px; margin-right: -15px;">
+      <button md-icon-button [mdMenuTriggerFor]="creditMenu" style="margin-top: -15px; margin-right: -15px;">
         <md-icon>more_vert</md-icon>
       </button>
     </div>
@@ -96,8 +96,63 @@
   </md-card>
 </div>
 
-<md-menu #actionsMenu="mdMenu" [overlapTrigger]="false" xPosition="before">
+<div fxLayout="row">
+  <md-card fxFlex>
+    <div fxLayout="row">
+      <h4 class="card-title">
+        Citi Simplicity<sup>®</sup> Card - No Late Fees Ever
+      </h4>
+      <span fxFlex></span>
+      <button color="primary" md-raised-button>
+        Apply Now
+        <md-icon style="font-size:20px;">lock_outline</md-icon>
+      </button>
+    </div>
+    <div fxLayout="row">
+      <div fxLayout="column" fxFlex>
+        <div>
+          <img src="assets/images/credit-card.png" alt="credit-card" style="width:200px;" />
+        </div>
+        <div fxLayout="row" style="margin-left:30px;">
+          <md-icon>star</md-icon>
+          <md-icon>star</md-icon>
+          <md-icon>star</md-icon>
+          <md-icon>star</md-icon>
+          <md-icon>star_half</md-icon>
+        </div>
+      </div>
+      <div fxLayout="column" fxFlex style="color: #3a405b;">
+        <div fxLayout="row" style="margin-bottom:5px;">
+          <div fxLayout="column">
+            <span><strong>Intro Purchase APR</strong></span>
+            <span>0% for 21 months on Purchases</span>
+          </div>
+        </div>
+        <div fxLayout="row" style="margin-bottom:5px;">
+          <div fxLayout="column">
+            <span><strong>Intro BT APR</strong></span>
+            <span>0% for 21 months on Balance Transfers</span>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxLayout="column">
+            <span><strong>Regular Purchase APR</strong></span>
+            <span>14.99% - 24.99% (Variable)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </md-card>
+</div>
+
+<md-menu #cashMenu="mdMenu" [overlapTrigger]="false" xPosition="before">
   <button md-menu-item routerLink="/examples/banking/create-account">
     <span>Create Account</span>
+  </button>
+</md-menu>
+
+<md-menu #creditMenu="mdMenu" [overlapTrigger]="false" xPosition="before">
+  <button md-menu-item routerLink="/examples/banking/credit-application">
+    <span>Apply for Credit Card</span>
   </button>
 </md-menu>
