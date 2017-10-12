@@ -14,6 +14,7 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
   private subscription: any;
   account: Account;
   accountForm: FormGroup;
+  working = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,12 +22,14 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.working = true;
     this.subscription = this.route.params.subscribe(params => {
       const accountId = +params['id'];
       this.accountsService.getAccountDetails(accountId)
         .subscribe((result: Account) => {
           this.account = result;
           this.initializeForm(this.account);
+          this.working = false;
         });
    });
   }

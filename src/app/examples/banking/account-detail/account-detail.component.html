@@ -8,6 +8,7 @@
         <span>{{account?.balance | currency:'USD':true}}</span>
       </div>
     </div>
+    <md-spinner *ngIf="working"></md-spinner>
     <form *ngIf="accountForm" [formGroup]="accountForm" (ngSubmit)="updateAccount()" novalidate autocomplete="off">
       <div fxLayout="column">
         <div fxLayout="row">
