@@ -47,7 +47,7 @@
     </div>
   </md-card>
 
-  <md-card fxFlex.gt-md="50">
+  <md-card fxFlex.gt-md="50" *ngIf="creditAccounts?.length > 0">
     <div fxLayout="row">
       <h4 class="card-title">Credit</h4>
       <span fxFlex></span>
@@ -96,51 +96,63 @@
   </md-card>
 </div>
 
-<div fxLayout="row">
+<div fxLayout="row" *ngIf="creditAccounts?.length === 0">
   <md-card fxFlex>
     <div fxLayout="row">
       <h4 class="card-title">
-        Citi Simplicity<sup>®</sup> Card - No Late Fees Ever
+        Citi Simplicity<sup>®</sup> Card
       </h4>
       <span fxFlex></span>
-      <button color="primary" md-raised-button>
+      <button color="primary" md-raised-button fxShow fxHide.xs routerLink="/examples/banking/credit-application">
         Apply Now
         <md-icon style="font-size:20px;">lock_outline</md-icon>
       </button>
     </div>
     <div fxLayout="row">
-      <div fxLayout="column" fxFlex>
-        <div>
-          <img src="assets/images/credit-card.png" alt="credit-card" style="width:200px;" />
+      <span fxFlex="5" fxHide fxShow.xs></span>
+      <div fxLayout="row" fxLayout.xs="column" fxFlex style="align-items: center;">
+        <div fxLayout="column" style="margin-top:10px;">
+          <div>
+            <img src="assets/images/credit-card.png" alt="credit-card" style="width:200px;" />
+          </div>
+          <div fxLayout="row" style="margin-left:20px; color: #F15B27;">
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+            <md-icon>star</md-icon>
+            <md-icon>star_half</md-icon>
+            <span style="margin-top:2px;margin-left:5px;">(122)</span>
+          </div>
         </div>
-        <div fxLayout="row" style="margin-left:30px;">
-          <md-icon>star</md-icon>
-          <md-icon>star</md-icon>
-          <md-icon>star</md-icon>
-          <md-icon>star</md-icon>
-          <md-icon>star_half</md-icon>
+        <span fxFlex="10"></span>
+        <div fxLayout="column" style="color: #3a405b;">
+          <div fxLayout="row" style="margin-bottom:5px;">
+            <div fxLayout="column">
+              <span><strong>Intro Purchase APR</strong></span>
+              <span>0% for 21 months on Purchases</span>
+            </div>
+          </div>
+          <div fxLayout="row" style="margin-bottom:5px;">
+            <div fxLayout="column">
+              <span><strong>Intro BT APR</strong></span>
+              <span>0% for 21 months on Balance Transfers</span>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div fxLayout="column">
+              <span><strong>Regular Purchase APR</strong></span>
+              <span>14.99% - 24.99% (Variable)</span>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row" fxHide fxShow.xs style="margin-top:15px; width:100%;">
+          <button color="primary" md-raised-button fxFlex routerLink="/examples/banking/credit-application">
+            Apply Now
+            <md-icon style="font-size:20px;">lock_outline</md-icon>
+          </button>
         </div>
       </div>
-      <div fxLayout="column" fxFlex style="color: #3a405b;">
-        <div fxLayout="row" style="margin-bottom:5px;">
-          <div fxLayout="column">
-            <span><strong>Intro Purchase APR</strong></span>
-            <span>0% for 21 months on Purchases</span>
-          </div>
-        </div>
-        <div fxLayout="row" style="margin-bottom:5px;">
-          <div fxLayout="column">
-            <span><strong>Intro BT APR</strong></span>
-            <span>0% for 21 months on Balance Transfers</span>
-          </div>
-        </div>
-        <div fxLayout="row">
-          <div fxLayout="column">
-            <span><strong>Regular Purchase APR</strong></span>
-            <span>14.99% - 24.99% (Variable)</span>
-          </div>
-        </div>
-      </div>
+      <span fxFlex="5" fxHide fxShow.xs></span>
     </div>
   </md-card>
 </div>
