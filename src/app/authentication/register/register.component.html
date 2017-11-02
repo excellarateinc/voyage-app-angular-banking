@@ -3,7 +3,6 @@
   <div fxLayout="row">
     <span fxFlex></span>
     <md-card fxFlex.md="80" fxFlex.lg="60" fxFlex.xl="50" style="margin-top:100px;">
-      <md-spinner *ngIf="working" class="loading-spinner"></md-spinner>
       <div>Create Account</div>
       <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
         <div fxLayout="column">
@@ -49,6 +48,9 @@
               Confirm Password is required
             </md-error>
           </md-input-container>
+          <span style="color: gray;">
+            <i>Password must be a minimum of 6 characters, have at least one special character, one upper case letter, one lower case letter and one digit.</i>
+          </span>
           <div *ngIf="registrationErrors?.length > 0">
             <span *ngFor="let error of registrationErrors" style="color:#f44336">
               {{error.errorDescription}}
@@ -56,6 +58,7 @@
             </span>
           </div>
           <div fxLayout="column" style="margin-top: 20px;">
+            <md-progress-bar mode="indeterminate" *ngIf="working"></md-progress-bar>
             <button md-raised-button color="primary" type="submit" [disabled]="working">
               Register
             </button>
@@ -116,6 +119,9 @@
             Confirm Password is required
           </md-error>
         </md-input-container>
+        <span style="color:white">
+          <i>Password must be a minimum of 6 characters, have at least one special character, one upper case letter, one lower case letter and one digit.</i>
+        </span>
         <div *ngIf="registrationErrors?.length > 0">
           <span *ngFor="let error of registrationErrors" style="color:white">
             {{error.errorDescription}}
@@ -124,6 +130,7 @@
         </div>
         <span>&nbsp;</span>
         <div fxLayout="column" style="margin-top: 20px;">
+          <md-progress-bar mode="indeterminate" *ngIf="working"></md-progress-bar>
           <button md-raised-button color="primary" type="submit">Register</button>
         </div>
       </div>

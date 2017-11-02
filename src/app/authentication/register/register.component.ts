@@ -42,7 +42,8 @@ export class RegisterComponent implements OnInit {
     const register = this.registerForm.value as Register;
     this.registerService.register(register)
       .subscribe(result => {
-        this.snackBar.open('Successfully registered! Please login to your new account', null, { duration: 5000 });
+        this.snackBar.open(
+          'Successfully registered! Please login to your new account', null, { duration: 5000, extraClasses: ['voyage-snackbar'] });
         this.router.navigate(['/authentication/login']);
         this.working = false;
       }, errors => {
