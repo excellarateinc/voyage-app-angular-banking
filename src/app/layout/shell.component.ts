@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
+import { MobileService } from '../core/mobile.service';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
@@ -16,13 +16,13 @@ export class ShellComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private media: ObservableMedia) { }
+    private mobileService: MobileService) { }
 
   ngOnInit(): void {
     this.isAuthenticated = this.authService.getToken() != null;
-    this.isMobile = this.media.isActive('xs') || this.media.isActive('sm');
-    this.watcher = this.media.subscribe((change: MediaChange) => {
-      this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+    this.isMobile = this.mobileService.isMobile();
+    this.watcher = this.mobileService.mobileChanged$.subscribe((isMobile: boolean) => {
+      this.isMobile = isMobile;
     });
   }
 

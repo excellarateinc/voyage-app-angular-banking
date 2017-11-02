@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
+import { Subscription } from 'rxjs/Subscription';
+import { MobileService } from '../../core/mobile.service';
 import { RegisterService } from './register.service';
 import { Register } from './register.model';
 import { Phone } from '../../core/user/phone.model';
@@ -14,15 +16,22 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   registrationErrors: Array<any>;
   working = false;
+  isMobile = false;
+  private watcher: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private router: Router,
-    private snackBar: MdSnackBar) { }
+    private snackBar: MdSnackBar,
+    private mobileService: MobileService) { }
 
   ngOnInit() {
     this.initializeForm();
+    this.isMobile = this.mobileService.isMobile();
+    this.watcher = this.mobileService.mobileChanged$.subscribe((isMobile: boolean) => {
+      this.isMobile = isMobile;
+    });
   }
 
   register(): void {

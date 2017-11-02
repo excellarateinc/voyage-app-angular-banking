@@ -1,5 +1,5 @@
 <!-- Tablet / Desktop -->
-<div class="masthead" fxShow fxHide.xs fxHide.sm>
+<div class="masthead" *ngIf="!isMobile">
   <div fxLayout="row">
     <span fxFlex></span>
     <md-card fxFlex.md="80" fxFlex.lg="60" fxFlex.xl="50" style="margin-top:100px;">
@@ -68,7 +68,7 @@
 </div>
 
 <!-- Mobile -->
-<div class="masthead-mobile" fxHide fxShow.xs fxShow.sm>
+<div class="masthead-mobile" *ngIf="isMobile">
   <div fxLayout="column" style="margin-left:10px; margin-right:10px;">
     <span>&nbsp;</span>
     <div style="color:white">Create Account</div>
@@ -92,7 +92,7 @@
             Last Name is required
           </md-error>
         </md-input-container>
-        <md-input-container>
+        <md-input-container class="light-input">
           <input mdInput placeholder="Mobile Phone" formControlName="phoneNumber" required>
           <md-error *ngIf="registerForm.controls['phoneNumber'].hasError('required')">
             Mobile Phone is required
